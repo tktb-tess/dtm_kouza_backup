@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>1_FL向け補足</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A//programing//codes//.vscode//github-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!-- omit in toc -->
+<h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC1%E5%9B%9E">CCS DTM講座'21 第1回</h1>
+<!-- omit in toc -->
+<ul>
+<li><a href="#12-daw%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B">1.2 DAWに触れる</a>
+<ul>
+<li><a href="#123-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99%E5%89%8D%E3%81%AB">1.2.3 曲を書き出す前に</a></li>
+<li><a href="#124-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99">1.2.4 曲を書き出す</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="12-daw%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B">1.2 DAWに触れる</h2>
+<p>FL Studioはかなり独特な操作性なので、鳴れるまでかなり苦労します。がんばりましょう。ざっくり専門用語込みで説明すると、「さまざまなパターンを張り付けて楽曲を完成させる」、です。詳しく見ていきましょう。</p>
+<p>DAWを起動するといきなりいろいろデータがロードされてびっくりしますが、サンプル曲です。気になる人は聞いてみてください。
+聴き終わったら、「FILE」→「New from template」→「Minimal」→「Empty」を選択してください。</p>
+<img src="./images/dtm027.png" alt="">
+<p>そうすると、まっさらになると思います。<br>
+<p>はじめに、チャンネルラックを表示させます。どこかをクリックしても開けますが、F6キーを押しても表示させられます。表示させると、</p>
+<img src="./images/dtm028.png" alt="">
+<p>のようになったと思います。この新しく現れたちっちゃい画面の下部に、「+」と書かれた部分があります。ここをクリックすると色々出てくるのですが、「Misc」というカテゴリーの下に「FL Keys」という楽器があるので、それを選択してください。元からあるSamplerに関しては、右クリックから開けるメニューで削除できるので、気に食わない人は削除して構いません。基本的に、このチャンネルラックに鳴らしたい楽器を全部入れてゆく形になります。
+<img src="./images/dtm029.png" alt="">
+<p>この画像のようになりましたか？あと、「FL keys」の横に「-」と表示されている人はマウスホイールをその上でコロコロして、「1」と表示されるようにしておいてください。それができたら、「FL Keys」と書いてあるうえで右クリックして、「Piano Roll」をクリックしてください。ピアノロールが表示されました。長かったですね……。</p>
+<img src="./images/dtm031.png" alt="">
+<p>操作方法ですが、左クリックで音符を置いて、右クリックで消せます。範囲選択はctrl+ドラッグで行えます。32分以上を入力したかったり、三連符を入力したかったりする人は、ピアノロール上部にある磁石みたいなアイコンをクリックしていろいろ変更してみてください。それと、ピアノロール左上の三角ボタンからメニューを開き、「View」→「Key labels」→「All notes」に設定すると、全ての音階にキーを表示することができます。</p>
+<p>打ち込みが終わったら、真ん中の行の「Pattern 1」の上でクリックして、その右の部分の「Track 1」と書いてあるところの1小節目をクリックしてください。</p>
+<img src="./images/dtm030.png" alt="">
+<p>こんな感じに、音符が表示されたと思います。</p>
+<p>ドラムの展開を変えたい！とか、メロディーを切り分けたい！とかなった場合は、画面真ん中にある「Pattern 1」とだけ書かれた謎の行があるのですが、その下にある「+」をクリックして、名前を付けると新しいパターンが作成されます。「Channel rack」と書いてある真上でマウスをコロコロしたり、秒数が書いてある部分の右下にある、「Pattern 1」などと表示されているところをクリックすることによってパターンを変更できます。打ち込みを始める前に、正しいパターンに対して操作を行っていることを確認したほうがいいです。</p>
+<p>音が鳴らないときは、再生する対象がSONGになっているか、PAT(patternの略ですね)になっているかを確認してみてください。BPMの横に書いてあります。</p>
+<h3 id="123-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99%E5%89%8D%E3%81%AB">1.2.3 曲を書き出す前に</h3>
+<p>F9キーを押すと、ミキサーが呼び出せます。<br>
+<img src="./images/dtm032.png" alt=""><br>
+これです。一番左にMasterって書いてある物があります。これはいじってはいけないやつです。その一つ右に「Insert 1」というのがあるので、これの音量をフェーダーで調整してください。「Insert n」のnは、ピアノロールを開く時の作業で、「-」の上でマウスをコロコロしたと思うのですが、ここの数字に関係しています。一種類の楽器に一つの数字を割り当てる、くらいの感覚でいいと思います。</p>
+<h3 id="124-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99">1.2.4 曲を書き出す</h3>
+<p>これまでと打って変わって、曲の書き出しはかなり簡単です。左上から「FILE」→「Export」→「WAV File」を選択すると、どこに出力するかのウインドウが出てくるので、タイトルと場所を決めて出力してください。</p>
+
+</body>
+</html>
