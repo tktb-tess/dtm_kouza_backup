@@ -3,7 +3,355 @@
 <head>
 <title>第2回</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<link rel="stylesheet" href="../style.css" type="text/css">
+
+<style>
+  /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  /*---------------------------------------------------------------------------------------------
+  *  Copyright (c) Microsoft Corporation. All rights reserved.
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+
+  body {
+    font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif); 
+    font-size: var(--vscode-markdown-font-size, 14px);
+    padding: 0 26px;
+    line-height: var(--vscode-markdown-line-height, 22px);
+    word-wrap: break-word;
+  }
+
+  #code-csp-warning {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: white;
+    margin: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-family: sans-serif;
+    background-color:#444444;
+    cursor: pointer;
+    padding: 6px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color:#007acc;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+  }
+
+  body.scrollBeyondLastLine {
+    margin-bottom: calc(100vh - 22px);
+  }
+
+  body.showEditorSelection .code-line {
+    position: relative;
+  }
+
+  body.showEditorSelection .code-active-line:before,
+  body.showEditorSelection .code-line:hover:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -12px;
+    height: 100%;
+  }
+
+  body.showEditorSelection li.code-active-line:before,
+  body.showEditorSelection li.code-line:hover:before {
+    left: -30px;
+  }
+
+  .vscode-light.showEditorSelection .code-active-line:before {
+    border-left: 3px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .vscode-light.showEditorSelection .code-line:hover:before {
+    border-left: 3px solid rgba(0, 0, 0, 0.40);
+  }
+
+  .vscode-light.showEditorSelection .code-line .code-line:hover:before {
+    border-left: none;
+  }
+
+  .vscode-dark.showEditorSelection .code-active-line:before {
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .vscode-dark.showEditorSelection .code-line:hover:before {
+    border-left: 3px solid rgba(255, 255, 255, 0.60);
+  }
+
+  .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+    border-left: none;
+  }
+
+  .vscode-high-contrast.showEditorSelection .code-active-line:before {
+    border-left: 3px solid rgba(255, 160, 0, 0.7);
+  }
+
+  .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+    border-left: 3px solid rgba(255, 160, 0, 1);
+  }
+
+  .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+    border-left: none;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-offset: -1px;
+  }
+
+  hr {
+    border: 0;
+    height: 2px;
+    border-bottom: 2px solid;
+  }
+
+  h1 {
+    padding-bottom: 0.3em;
+    line-height: 1.2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
+  h1, h2, h3 {
+    font-weight: normal;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  table > thead > tr > th {
+    text-align: left;
+    border-bottom: 1px solid;
+  }
+
+  table > thead > tr > th,
+  table > thead > tr > td,
+  table > tbody > tr > th,
+  table > tbody > tr > td {
+    padding: 5px 10px;
+  }
+
+  table > tbody > tr + tr > td {
+    border-top: 1px solid;
+  }
+
+  blockquote {
+    margin: 0 7px 0 5px;
+    padding: 0 16px 0 10px;
+    border-left-width: 5px;
+    border-left-style: solid;
+  }
+
+  code {
+    font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+    font-size: 1em;
+    line-height: 1.357em;
+  }
+
+  body.wordWrap pre {
+    white-space: pre-wrap;
+  }
+
+  pre:not(.hljs),
+  pre.hljs code > div {
+    padding: 16px;
+    border-radius: 3px;
+    overflow: auto;
+  }
+
+  pre code {
+    color: var(--vscode-editor-foreground);
+    tab-size: 4;
+  }
+
+  /** Theming */
+
+  .vscode-light pre {
+    background-color: rgba(220, 220, 220, 0.4);
+  }
+
+  .vscode-dark pre {
+    background-color: rgba(10, 10, 10, 0.4);
+  }
+
+  .vscode-high-contrast pre {
+    background-color: rgb(0, 0, 0);
+  }
+
+  .vscode-high-contrast h1 {
+    border-color: rgb(0, 0, 0);
+  }
+
+  .vscode-light table > thead > tr > th {
+    border-color: rgba(0, 0, 0, 0.69);
+  }
+
+  .vscode-dark table > thead > tr > th {
+    border-color: rgba(255, 255, 255, 0.69);
+  }
+
+  .vscode-light h1,
+  .vscode-light hr,
+  .vscode-light table > tbody > tr + tr > td {
+    border-color: rgba(0, 0, 0, 0.18);
+  }
+
+  .vscode-dark h1,
+  .vscode-dark hr,
+  .vscode-dark table > tbody > tr + tr > td {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+
+  /* Tomorrow Theme */
+  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+  /* Tomorrow Comment */
+  .hljs-comment,
+  .hljs-quote {
+    color: #8e908c;
+  }
+
+  /* Tomorrow Red */
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-tag,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-regexp,
+  .hljs-deletion {
+    color: #c82829;
+  }
+
+  /* Tomorrow Orange */
+  .hljs-number,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-params,
+  .hljs-meta,
+  .hljs-link {
+    color: #f5871f;
+  }
+
+  /* Tomorrow Yellow */
+  .hljs-attribute {
+    color: #eab700;
+  }
+
+  /* Tomorrow Green */
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-addition {
+    color: #718c00;
+  }
+
+  /* Tomorrow Blue */
+  .hljs-title,
+  .hljs-section {
+    color: #4271ae;
+  }
+
+  /* Tomorrow Purple */
+  .hljs-keyword,
+  .hljs-selector-tag {
+    color: #8959a8;
+  }
+
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    color: #4d4d4c;
+    padding: 0.5em;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: bold;
+  }
+
+
+  /*
+  * Markdown PDF CSS
+  */
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+    
+    padding: 0 12px;
+  }
+
+  pre {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  pre:not(.hljs) {
+    padding: 23px;
+    line-height: 19px;
+  }
+
+  blockquote {
+    background: rgba(127, 127, 127, 0.1);
+    border-color: rgba(0, 122, 204, 0.5);
+  }
+
+  .emoji {
+    height: 1.4em;
+  }
+
+  code {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  /* for inline code */
+  :not(pre):not(.hljs) > code {
+    color: #C9AE75; /* Change the old color so it seems less like an error */
+    font-size: inherit;
+  }
+
+  /* Page Break : use <div class="page"/> to insert page break
+  -------------------------------------------------------- */
+  .page {
+    page-break-after: always;
+  }
+</style>
+
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
@@ -15,117 +363,128 @@
           : 'default'
     });
   </script>
-<!-- omit in toc -->
-<h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC2%E5%9B%9E">CCS DTM講座'21 第2回</h1>
-<!-- omit in toc -->
-<h2 id="%E7%9B%AE%E6%AC%A1">目次</h2>
-<ul>
-<li><a href="#21-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E1%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1 音楽理論基礎1(スケール)</a>
-<ul>
-<li><a href="#211-%E9%9F%B3%E5%90%8D%E3%82%92%E7%B5%90%E3%81%B3%E3%81%A4%E3%81%91%E3%82%8B">2.1.1 音名を結びつける</a></li>
-<li><a href="#212-%E9%9F%B3%E7%AC%A6%E3%81%AE%E6%A7%98%E3%80%85%E3%81%AA%E8%A1%A8%E3%81%97%E6%96%B9">2.1.2 音符の様々な表し方</a></li>
-<li><a href="#213-%E3%83%9A%E3%83%B3%E3%82%BF%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1.3 ペンタトニックスケール</a></li>
-</ul>
-</li>
-<li><a href="#22-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E4%BD%9C%E6%88%90">2.2 メロディ作成</a>
-<ul>
-<li><a href="#221-%E4%B8%8B%E6%BA%96%E5%82%99">2.2.1 下準備</a></li>
-<li><a href="#222-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%82%92%E4%BD%9C%E3%82%8B">2.2.2 メロディを作る</a></li>
-<li><a href="#223-%E3%81%84%E3%81%84%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB">2.2.3 いいメロディのために</a></li>
-</ul>
-</li>
-<li><a href="#23-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">2.3 今日やった大事なこと(覚えてね！)</a></li>
-<li><a href="#24-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">2.4 おわりに</a></li>
-<li><a href="#25-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">2.5 参考にした資料</a></li>
-</ul>
-<h2 id="21-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E1%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1 音楽理論基礎1(スケール)</h2>
-<p>世の中の音楽というのは、大体7音(とそのオクターブ違い)からなっています。前回のデータが開ける人は開いて確認してみましょう。<br>
-前回の曲はロ短調、B-minor(もしかしたらニ長調、D-majorかも)という調なのですが、この調には、「シ、ド♯、レ、ミ、ファ♯、ソ、ラ(、シ)」が含まれています。この順番に鍵盤を叩いてみると、なんとなんだか物悲しい(短調なので)「ドレミファソラシド」が聞こえてきます。実は、どの鍵盤から始めても、「ドレミファソラシド」っぽく聞こえるようにできます。日常によくある例でいうと、カラオケでキーを変えても問題なく歌えることと同じです。</p>
-<h3 id="211-%E9%9F%B3%E5%90%8D%E3%82%92%E7%B5%90%E3%81%B3%E3%81%A4%E3%81%91%E3%82%8B">2.1.1 音名を結びつける</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">イタリア</th>
-<th style="text-align:left">ド</th>
-<th style="text-align:left">レ</th>
-<th style="text-align:left">ミ</th>
-<th style="text-align:left">ファ</th>
-<th style="text-align:left">ソ</th>
-<th style="text-align:left">ラ</th>
-<th style="text-align:left">シ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">英米</td>
-<td style="text-align:left">C</td>
-<td style="text-align:left">D</td>
-<td style="text-align:left">E</td>
-<td style="text-align:left">F</td>
-<td style="text-align:left">G</td>
-<td style="text-align:left">A</td>
-<td style="text-align:left">B</td>
-</tr>
-<tr>
-<td style="text-align:left">日本</td>
-<td style="text-align:left">ハ</td>
-<td style="text-align:left">ニ</td>
-<td style="text-align:left">ホ</td>
-<td style="text-align:left">ヘ</td>
-<td style="text-align:left">ト</td>
-<td style="text-align:left">イ</td>
-<td style="text-align:left">ロ</td>
-</tr>
-</tbody>
-</table>
-<p>イタリアはドから始めているんですけど、それ以外の国ではなんかラを基準にしちゃったらしいですね。イタリア式の表記は知っていると思うので、英米式の表記をイタリア式のそれと結び付けましょう。日本式の表記は調を表す時にしか使わないけど、調が分からないと結構困るので覚えたほうがいいです。(筆者は覚えていません……)逆に英米式はコードとかにも大活躍です。</p>
-<h3 id="212-%E9%9F%B3%E7%AC%A6%E3%81%AE%E6%A7%98%E3%81%AA%E8%A1%A8%E3%81%97%E6%96%B9">2.1.2 音符の様々な表し方</h3>
-<p>少し前に、どこからでも「ドレミファソラシド」っぽい音が作れるという話をしました。そうすると、音名で指定するよりも、「その調の中で何番目の音」ということに注目してあげたほうが便利だということに気が付きます。(単に「ミ」と言われるよりも、「3番目」と言われたほうが汎用性が高いですよね)</p>
-<p>このような理由から、調を決定する音(主音といいます。〇長調の〇のこと)から、音の低い順にI,II,III,...,VIIとローマ数字を振っていきます。これを<strong>ディグリーネーム</strong>といいます。日本語では一度、二度…、七度となります。(ディグリーってdegreeなので当たり前ですね)</p>
-<p>五線譜が読めなくてもピアノロールを数えればどの音を指しているのかわかるという点でうれしいですが、もっぱらスケールやコード進行で使うことが大半です。</p>
-<h3 id="213-%E3%83%9A%E3%83%B3%E3%82%BF%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1.3 ペンタトニックスケール</h3>
-<p>ようやく本題、スケールの話です。スケールというのはざっくり言うと音階のことで、ふつうの楽曲はスケールの中にある音を使って作曲します。
-メジャースケール(長調)とか、マイナースケール(短調)とか聞いたことがあるかもしれません。(詳しくは次回やります)</p>
-<p>今回はC-メジャーペンタトニックスケールでメロディを作っていきましょう。メジャーペンタトニックスケールは、メジャースケール(いわゆる「ドレミファソラシド」)から四度と七度を抜いたスケールです。
-日本語ではヨナ抜き音階と呼ばれたりします。<br>
-ヨナ抜き音階は邦楽に非常に採用例が多く、たとえば『夏祭り』や『千本桜』、『恋愛サーキュレーション』などに使われています。一方民謡にも多く、有名どころだと『蛍の光』もそうです。<br>
-(マイナーペンタトニックスケールももちろんあって、二度と六度を抜きます)</p>
-<h2 id="22-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E4%BD%9C%E6%88%90">2.2 メロディ作成</h2>
-<h3 id="221-%E4%B8%8B%E6%BA%96%E5%82%99">2.2.1 下準備</h3>
-<p>以降Calkwalk向け説明です。<br>
-FL向け説明は<a href="2_FL.html">こちら</a><br>
-Studio One向け説明は<a href="2_SO.html">こちら</a></p>
-<p>Cakewalkは便利なので、スケール外の音を入力しないような設定ができます。前回と同様にTTS-1を追加し、ピアノロールを開きます。すると右側に謎のメニューがあります。
-<img src="./images/dtm007.png" alt="">
-<img src="./images/dtm008.png" alt="">
-楽器を右クリックするとメニューが出てくるので、ルートノートをCに、スケールをMajor Pentatonicに設定したのち、スケールにスナップ オン/オフにチェック。これでスケール外の音を入力できなくできます。<br>
-あと今のところあんまり関係ないですが、楽器の名前の横に書いてあるMはMute、SはSoloの略です。Mを選択するとその楽器がミュートされて、Sを選択するとSがついている楽器だけが鳴ります。</p>
-<h3 id="222-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%82%92%E4%BD%9C%E3%82%8B">2.2.2 メロディを作る</h3>
-<p>実際に打ち込んでみましょう。本当に自由に、なんでもいいです。</p>
-<h3 id="223-%E3%81%84%E3%81%84%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB">2.2.3 いいメロディのために</h3>
-<p>メロディがぱっとしないなー、なんてことはよくあります(筆者もです)。ので、いくつかいい感じのメロディにするためのコツを紹介します。</p>
-<ul>
-<li>音の長さにメリハリを持たせる<br>
-どうしても4分音符や8分音符ばかり使ってしまいがちなのですが、適度に16分音符や休符を混ぜたり、白玉(長音のことを俗にこう呼びます)を混ぜて伸びを出してみたりするといい感じです。トリルとかもいいかもしれませんね。</li>
-<li>音の高さにメリハリを持たせる<br>
-1オクターブとか、五度くらいなら変えても大丈夫だと思います。</li>
-<li>(上級者向け)スケール外の音を使う<br>
-常用するとなんか変になっちゃうので、アクセント程度に……</li>
-</ul>
-<h2 id="23-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">2.3 今日やった大事なこと(覚えてね！)</h2>
-<ul>
-<li>音名の結び付け</li>
-<li>ディグリーネーム</li>
-</ul>
-<h2 id="24-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">2.4 おわりに</h2>
-<p>初めての作曲、お疲れ様でした。楽しいと思ってくれたらうれしいです。あとはベースとドラムがあれば楽曲が完成するわけです。皆さんが想像していたよりかは大変ではないかもしれません。そんなことないかも。<br>
-ところで、今回からは理論を学んでいくわけですが、理論はあくまで先人の遺産に過ぎません。これに則ればある程度いい感じに聞こえる、という程度のものであって、金科玉条などではないです。実際現代の音楽は理論から外れた部分を大なり小なり持っていたりもするので、あまり気にしすぎる必要はないです。そんなことを気にしている時間があったら曲を完成させるほうがいい、とか。</p>
-<p><strong>なんと、今回は宿題があります。</strong><br>
-この講座の第5回は作成した曲を発表する回です。今回学んだことをもとに、発表する曲(のサビにあたる部分)のメロディを考えておいてください。DAWにピアノ音源で打ち込んでおくと、いざ作り始めるときに役に立ちます。</p>
-<h2 id="25-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">2.5 参考にした資料</h2>
-<ul>
-<li><a href="https://soundquest.jp/quest/prerequisite/interval-1/">度数と音程</a>:説明について</li>
-</ul>
+  <!-- omit in toc -->
+  <h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC2%E5%9B%9E">CCS DTM講座'21 第2回</h1>
+  <!-- omit in toc -->
+  <h2 id="%E7%9B%AE%E6%AC%A1">目次</h2>
+
+  <ul>
+    <li><a href="#21-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E1%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1 音楽理論基礎1(スケール)</a>
+      <ul>
+        <li><a href="#211-%E9%9F%B3%E5%90%8D%E3%82%92%E7%B5%90%E3%81%B3%E3%81%A4%E3%81%91%E3%82%8B">2.1.1 音名を結びつける</a></li>
+        <li><a href="#212-%E9%9F%B3%E7%AC%A6%E3%81%AE%E6%A7%98%E3%80%85%E3%81%AA%E8%A1%A8%E3%81%97%E6%96%B9">2.1.2 音符の様々な表し方</a></li>
+        <li><a href="#213-%E3%83%9A%E3%83%B3%E3%82%BF%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1.3 ペンタトニックスケール</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E4%BD%9C%E6%88%90">2.2 メロディ作成</a>
+      <ul>
+        <li><a href="#221-%E4%B8%8B%E6%BA%96%E5%82%99">2.2.1 下準備</a></li>
+        <li><a href="#222-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%82%92%E4%BD%9C%E3%82%8B">2.2.2 メロディを作る</a></li>
+        <li><a href="#223-%E3%81%84%E3%81%84%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB">2.2.3 いいメロディのために</a></li>
+      </ul>
+    </li>
+    <li><a href="#23-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">2.3 今日やった大事なこと(覚えてね！)</a></li>
+    <li><a href="#24-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">2.4 おわりに</a></li>
+    <li><a href="#25-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">2.5 参考にした資料</a></li>
+  </ul>
+
+  <h2 id="21-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E1%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1 音楽理論基礎1(スケール)</h2>
+
+  <p>世の中の音楽というのは、大体7音(とそのオクターブ違い)からなっています。前回のデータが開ける人は開いて確認してみましょう。<br>
+  前回の曲はロ短調、B-minor(もしかしたらニ長調、D-majorかも)という調なのですが、この調には、「シ、ド♯、レ、ミ、ファ♯、ソ、ラ(、シ)」が含まれています。この順番に鍵盤を叩いてみると、なんとなんだか物悲しい(短調なので)「ドレミファソラシド」が聞こえてきます。実は、どの鍵盤から始めても、「ドレミファソラシド」っぽく聞こえるようにできます。日常によくある例でいうと、カラオケでキーを変えても問題なく歌えることと同じです。</p>
+  <h3 id="211-%E9%9F%B3%E5%90%8D%E3%82%92%E7%B5%90%E3%81%B3%E3%81%A4%E3%81%91%E3%82%8B">2.1.1 音名を結びつける</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left">イタリア</th>
+        <th style="text-align:left">ド</th>
+        <th style="text-align:left">レ</th>
+        <th style="text-align:left">ミ</th>
+        <th style="text-align:left">ファ</th>
+        <th style="text-align:left">ソ</th>
+        <th style="text-align:left">ラ</th>
+        <th style="text-align:left">シ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:left">英米</td>
+        <td style="text-align:left">C</td>
+        <td style="text-align:left">D</td>
+        <td style="text-align:left">E</td>
+        <td style="text-align:left">F</td>
+        <td style="text-align:left">G</td>
+        <td style="text-align:left">A</td>
+        <td style="text-align:left">B</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">日本</td>
+        <td style="text-align:left">ハ</td>
+        <td style="text-align:left">ニ</td>
+        <td style="text-align:left">ホ</td>
+        <td style="text-align:left">ヘ</td>
+        <td style="text-align:left">ト</td>
+        <td style="text-align:left">イ</td>
+        <td style="text-align:left">ロ</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>イタリアはドから始めているんですけど、それ以外の国ではなんかラを基準にしちゃったらしいですね。イタリア式の表記は知っていると思うので、英米式の表記をイタリア式のそれと結び付けましょう。日本式の表記は調を表す時にしか使わないけど、調が分からないと結構困るので覚えたほうがいいです。(筆者は覚えていません……)逆に英米式はコードとかにも大活躍です。</p>
+  
+  <h3 id="212-%E9%9F%B3%E7%AC%A6%E3%81%AE%E6%A7%98%E3%81%AA%E8%A1%A8%E3%81%97%E6%96%B9">2.1.2 音符の様々な表し方</h3>
+  
+  <p>少し前に、どこからでも「ドレミファソラシド」っぽい音が作れるという話をしました。そうすると、音名で指定するよりも、「その調の中で何番目の音」ということに注目してあげたほうが便利だということに気が付きます。(単に「ミ」と言われるよりも、「3番目」と言われたほうが汎用性が高いですよね)</p>
+  <p>このような理由から、調を決定する音(主音といいます。〇長調の〇のこと)から、音の低い順にI,II,III,...,VIIとローマ数字を振っていきます。これを<strong>ディグリーネーム</strong>といいます。日本語では一度、二度…、七度となります。(ディグリーってdegreeなので当たり前ですね)</p>
+  <p>五線譜が読めなくてもピアノロールを数えればどの音を指しているのかわかるという点でうれしいですが、もっぱらスケールやコード進行で使うことが大半です。</p>
+  <h3 id="213-%E3%83%9A%E3%83%B3%E3%82%BF%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">2.1.3 ペンタトニックスケール</h3>
+  <p>ようやく本題、スケールの話です。スケールというのはざっくり言うと音階のことで、ふつうの楽曲はスケールの中にある音を使って作曲します。
+  メジャースケール(長調)とか、マイナースケール(短調)とか聞いたことがあるかもしれません。(詳しくは次回やります)</p>
+  <p>今回はC-メジャーペンタトニックスケールでメロディを作っていきましょう。メジャーペンタトニックスケールは、メジャースケール(いわゆる「ドレミファソラシド」)から四度と七度を抜いたスケールです。
+  日本語ではヨナ抜き音階と呼ばれたりします。<br>
+  ヨナ抜き音階は邦楽に非常に採用例が多く、たとえば『夏祭り』や『千本桜』、『恋愛サーキュレーション』などに使われています。一方民謡にも多く、有名どころだと『蛍の光』もそうです。<br>
+  (マイナーペンタトニックスケールももちろんあって、二度と六度を抜きます)</p>
+
+  <h2 id="22-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E4%BD%9C%E6%88%90">2.2 メロディ作成</h2>
+  <h3 id="221-%E4%B8%8B%E6%BA%96%E5%82%99">2.2.1 下準備</h3>
+
+  <p>以降Calkwalk向け説明です。<br>
+  FL向け説明は<a href="2_FL.html">こちら</a><br>
+  Studio One向け説明は<a href="2_SO.html">こちら</a></p>
+  <p>Cakewalkは便利なので、スケール外の音を入力しないような設定ができます。前回と同様にTTS-1を追加し、ピアノロールを開きます。すると右側に謎のメニューがあります。
+  <img src="./images/dtm007.png" alt="">
+  <img src="./images/dtm008.png" alt="">
+  楽器を右クリックするとメニューが出てくるので、ルートノートをCに、スケールをMajor Pentatonicに設定したのち、スケールにスナップ オン/オフにチェック。これでスケール外の音を入力できなくできます。<br>
+  あと今のところあんまり関係ないですが、楽器の名前の横に書いてあるMはMute、SはSoloの略です。Mを選択するとその楽器がミュートされて、Sを選択するとSがついている楽器だけが鳴ります。</p>
+  <h3 id="222-%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%82%92%E4%BD%9C%E3%82%8B">2.2.2 メロディを作る</h3>
+  <p>実際に打ち込んでみましょう。本当に自由に、なんでもいいです。</p>
+  <h3 id="223-%E3%81%84%E3%81%84%E3%83%A1%E3%83%AD%E3%83%87%E3%82%A3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB">2.2.3 いいメロディのために</h3>
+  <p>メロディがぱっとしないなー、なんてことはよくあります(筆者もです)。ので、いくつかいい感じのメロディにするためのコツを紹介します。</p>
+  <ul>
+    <li>音の長さにメリハリを持たせる<br>
+    どうしても4分音符や8分音符ばかり使ってしまいがちなのですが、適度に16分音符や休符を混ぜたり、白玉(長音のことを俗にこう呼びます)を混ぜて伸びを出してみたりするといい感じです。トリルとかもいいかもしれませんね。</li>
+    <li>音の高さにメリハリを持たせる<br>
+    1オクターブとか、五度くらいなら変えても大丈夫だと思います。</li>
+    <li>(上級者向け)スケール外の音を使う<br>
+    常用するとなんか変になっちゃうので、アクセント程度に……</li>
+  </ul>
+
+  <h2 id="23-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">2.3 今日やった大事なこと(覚えてね！)</h2>
+  
+  <ul>
+    <li>音名の結び付け</li>
+    <li>ディグリーネーム</li>
+  </ul>
+
+  <h2 id="24-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">2.4 おわりに</h2>
+
+  <p>初めての作曲、お疲れ様でした。楽しいと思ってくれたらうれしいです。あとはベースとドラムがあれば楽曲が完成するわけです。皆さんが想像していたよりかは大変ではないかもしれません。そんなことないかも。<br>
+  ところで、今回からは理論を学んでいくわけですが、理論はあくまで先人の遺産に過ぎません。これに則ればある程度いい感じに聞こえる、という程度のものであって、金科玉条などではないです。実際現代の音楽は理論から外れた部分を大なり小なり持っていたりもするので、あまり気にしすぎる必要はないです。そんなことを気にしている時間があったら曲を完成させるほうがいい、とか。</p>
+  <p><strong>なんと、今回は宿題があります。</strong><br>
+  この講座の第5回は作成した曲を発表する回です。今回学んだことをもとに、発表する曲(のサビにあたる部分)のメロディを考えておいてください。DAWにピアノ音源で打ち込んでおくと、いざ作り始めるときに役に立ちます。</p>
+  <h2 id="25-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">2.5 参考にした資料</h2>
+  <ul>
+    <li><a href="https://soundquest.jp/quest/prerequisite/interval-1/">度数と音程</a>:説明について</li>
+  </ul>
 
 </body>
 </html>

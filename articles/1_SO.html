@@ -3,7 +3,353 @@
 <head>
 <title>1_スタワン向け補足</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<link rel="stylesheet" href="../style.css" type="text/css">
+<style>
+  /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  /*---------------------------------------------------------------------------------------------
+  *  Copyright (c) Microsoft Corporation. All rights reserved.
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+
+  body {
+    font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif); 
+    font-size: var(--vscode-markdown-font-size, 14px);
+    padding: 0 26px;
+    line-height: var(--vscode-markdown-line-height, 22px);
+    word-wrap: break-word;
+  }
+
+  #code-csp-warning {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: white;
+    margin: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-family: sans-serif;
+    background-color:#444444;
+    cursor: pointer;
+    padding: 6px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color:#007acc;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+  }
+
+  body.scrollBeyondLastLine {
+    margin-bottom: calc(100vh - 22px);
+  }
+
+  body.showEditorSelection .code-line {
+    position: relative;
+  }
+
+  body.showEditorSelection .code-active-line:before,
+  body.showEditorSelection .code-line:hover:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -12px;
+    height: 100%;
+  }
+
+  body.showEditorSelection li.code-active-line:before,
+  body.showEditorSelection li.code-line:hover:before {
+    left: -30px;
+  }
+
+  .vscode-light.showEditorSelection .code-active-line:before {
+    border-left: 3px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .vscode-light.showEditorSelection .code-line:hover:before {
+    border-left: 3px solid rgba(0, 0, 0, 0.40);
+  }
+
+  .vscode-light.showEditorSelection .code-line .code-line:hover:before {
+    border-left: none;
+  }
+
+  .vscode-dark.showEditorSelection .code-active-line:before {
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .vscode-dark.showEditorSelection .code-line:hover:before {
+    border-left: 3px solid rgba(255, 255, 255, 0.60);
+  }
+
+  .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+    border-left: none;
+  }
+
+  .vscode-high-contrast.showEditorSelection .code-active-line:before {
+    border-left: 3px solid rgba(255, 160, 0, 0.7);
+  }
+
+  .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+    border-left: 3px solid rgba(255, 160, 0, 1);
+  }
+
+  .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+    border-left: none;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-offset: -1px;
+  }
+
+  hr {
+    border: 0;
+    height: 2px;
+    border-bottom: 2px solid;
+  }
+
+  h1 {
+    padding-bottom: 0.3em;
+    line-height: 1.2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
+  h1, h2, h3 {
+    font-weight: normal;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  table > thead > tr > th {
+    text-align: left;
+    border-bottom: 1px solid;
+  }
+
+  table > thead > tr > th,
+  table > thead > tr > td,
+  table > tbody > tr > th,
+  table > tbody > tr > td {
+    padding: 5px 10px;
+  }
+
+  table > tbody > tr + tr > td {
+    border-top: 1px solid;
+  }
+
+  blockquote {
+    margin: 0 7px 0 5px;
+    padding: 0 16px 0 10px;
+    border-left-width: 5px;
+    border-left-style: solid;
+  }
+
+  code {
+    font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+    font-size: 1em;
+    line-height: 1.357em;
+  }
+
+  body.wordWrap pre {
+    white-space: pre-wrap;
+  }
+
+  pre:not(.hljs),
+  pre.hljs code > div {
+    padding: 16px;
+    border-radius: 3px;
+    overflow: auto;
+  }
+
+  pre code {
+    color: var(--vscode-editor-foreground);
+    tab-size: 4;
+  }
+
+  /** Theming */
+
+  .vscode-light pre {
+    background-color: rgba(220, 220, 220, 0.4);
+  }
+
+  .vscode-dark pre {
+    background-color: rgba(10, 10, 10, 0.4);
+  }
+
+  .vscode-high-contrast pre {
+    background-color: rgb(0, 0, 0);
+  }
+
+  .vscode-high-contrast h1 {
+    border-color: rgb(0, 0, 0);
+  }
+
+  .vscode-light table > thead > tr > th {
+    border-color: rgba(0, 0, 0, 0.69);
+  }
+
+  .vscode-dark table > thead > tr > th {
+    border-color: rgba(255, 255, 255, 0.69);
+  }
+
+  .vscode-light h1,
+  .vscode-light hr,
+  .vscode-light table > tbody > tr + tr > td {
+    border-color: rgba(0, 0, 0, 0.18);
+  }
+
+  .vscode-dark h1,
+  .vscode-dark hr,
+  .vscode-dark table > tbody > tr + tr > td {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+
+  /* Tomorrow Theme */
+  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+  /* Tomorrow Comment */
+  .hljs-comment,
+  .hljs-quote {
+    color: #8e908c;
+  }
+
+  /* Tomorrow Red */
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-tag,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-regexp,
+  .hljs-deletion {
+    color: #c82829;
+  }
+
+  /* Tomorrow Orange */
+  .hljs-number,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-params,
+  .hljs-meta,
+  .hljs-link {
+    color: #f5871f;
+  }
+
+  /* Tomorrow Yellow */
+  .hljs-attribute {
+    color: #eab700;
+  }
+
+  /* Tomorrow Green */
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-addition {
+    color: #718c00;
+  }
+
+  /* Tomorrow Blue */
+  .hljs-title,
+  .hljs-section {
+    color: #4271ae;
+  }
+
+  /* Tomorrow Purple */
+  .hljs-keyword,
+  .hljs-selector-tag {
+    color: #8959a8;
+  }
+
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    color: #4d4d4c;
+    padding: 0.5em;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: bold;
+  }
+
+
+  /*
+  * Markdown PDF CSS
+  */
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+    
+    padding: 0 12px;
+  }
+
+  pre {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  pre:not(.hljs) {
+    padding: 23px;
+    line-height: 19px;
+  }
+
+  blockquote {
+    background: rgba(127, 127, 127, 0.1);
+    border-color: rgba(0, 122, 204, 0.5);
+  }
+
+  .emoji {
+    height: 1.4em;
+  }
+
+  code {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  /* for inline code */
+  :not(pre):not(.hljs) > code {
+    color: #C9AE75; /* Change the old color so it seems less like an error */
+    font-size: inherit;
+  }
+
+  /* Page Break : use <div class="page"/> to insert page break
+  -------------------------------------------------------- */
+  .page {
+    page-break-after: always;
+  }
+</style>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
@@ -15,57 +361,60 @@
           : 'default'
     });
   </script>
-<!-- omit in toc -->
-<h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC1%E5%9B%9E">CCS DTM講座'21 第1回</h1>
-<!-- omit in toc -->
-<ul>
-<li><a href="#12-daw%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B">1.2 DAWに触れる</a>
-<ul>
-<li><a href="#123-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99%E5%89%8D%E3%81%AB">1.2.3 曲を書き出す前に</a></li>
-<li><a href="#124-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99">1.2.4 曲を書き出す</a></li>
-</ul>
-</li>
-</ul>
-<p>※筆者はStudio One有料版を使っているので、皆様の手元にはない謎の項目などが画像内にあるかもしれないです。<br>
-多少混乱するかもしれませんがご了承ください。</p>
-<h2 id="12-daw%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B">1.2 DAWに触れる</h2>
-<p>DAWを起動すると、以下のような画面が表示されます。</p>
-<img src="./images/dtm019.png" alt=""><br>
-<img src="./images/dtm_ad_1_01.png" alt="">
-<p>「新規ソング」をクリックしたのち、設定は特に変えず、OKをクリックしてください。(左上に丸ついてますが気にしないで)</p>
-<img src="./images/dtm020.png" alt="">
-<p>この画面になったら、右の「インストゥルメント」をクリック。右になんか出ると思うのでそのうちの「PreSonus」をクリック。</p>
-<img src="./images/dtm_ad_1_02.png" alt="">
-<p>「Presence」ってのがあると思うのでこれを赤矢印のように左にドラッグしてください。そうすると立ち上がります。下のような画面が出ると思います。<br>
-(出てないときは、左側の「Presence」と書いてあるところの右側にあるピアノマークをクリックしてください。)</p>
-<img src="./images/dtm_ad_1_03.png" alt="">
-<p>上の画面で、赤丸付けた所をクリックして、「Keyboards」→「Grand Piano」を選択してください。ピアノの音になります。</p>
-<img src="./images/dtm_ad_1_04.png" alt=""><br>
-<img src="./images/dtm_ad_1_05.png" alt="">
-<p>元の画面に戻ります。次に、左上の「イベント」→「インストゥルメントパートを挿入」をクリック。なんか青い四角(青くないかも)が真ん中の空間に出てくると思います。</p>
-<img src="./images/dtm_ad_1_06.png" alt="">
-<p>これが音を入力する場所です。(入力する音のことを<strong>ノート(note)</strong>といいます。覚えて下さい)黄色丸の部分をドラッグすると伸ばせます。適宜伸ばしといてください。</p>
-<img src="./images/dtm_ad_1_07.png" alt="">
-<p>次に、青い四角を一回クリックしてから、右下の「編集」という所をクリックすると、ピアノロールが開きます。開いたら、「スナップ」を「順応」に変更してください。16分音符より細かい音符や三連符を入力したい方は、適宜クオンタイズの値を変更してみてください。<br>
-(分数の表示になってると思います。1/n=n分音符ってことです)<br>
-黄色丸のとこらへんを上下にドラッグすると画面の大きさが変えられます。</p>
-<img src="./images/dtm_ad_1_07_1.png" alt="">
-<p>さて、いよいよ入力です。少々複雑ですが、付いて来れることを願っています。</p>
-<p><strong>Ctrlキーを押しながら</strong>ドラッグすると、ノートが入力されます。Ctrlを押したままもう一度入力したノートをクリックすると、消せます。<br>
-入力後、<strong>Ctrlを押さずに</strong>ドラッグすると移動できます。また、黄色丸の部分をつかむと長さを変えられます。</p>
-<p>入力中、上下にドラッグするとノートごとの音量(<strong>ベロシティ(velocity)</strong>といいます)が変えられます。ベロシティは下にある赤丸つけた謎の棒をドラッグでも変えられます。</p>
-<p>Ctrlを押すやり方以外にも、左ちょい上、緑丸の所をクリックすればノートが置けます。その場合、ピンク丸のとこをクリックすればもとに戻ります。</p>
-<h3 id="123-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99%E5%89%8D%E3%81%AB">1.2.3 曲を書き出す前に</h3>
-<img src="./images/dtm_ad_1_08.png" alt="">
-<p>フェーダーは、上の画像の右下、赤丸で囲った「ミックス」をクリックして青くすると出てきます。左の方のフェーダーで調節しましょう。いじってはいけないのは右側のMainです。</p>
-<h3 id="124-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99">1.2.4 曲を書き出す</h3>
-<img src="./images/dtm_ad_1_09.png" alt="">
-<p>上画像赤丸の三角形みたいな形のところを、左端から曲が終わる一小節後くらいまでドラッグしてください。多分最初は左端にあると思います。</p>
-<img src="./images/dtm_ad_1_10.png" alt="">
-<p>これでループが設定されるので、左上の「ソング」→「ミックスダウンをエクスポート」をクリックしてください。</p>
-<img src="./images/dtm_ad_1_11.png" alt="">
-<p>左の出力形式は何でもいいです。だいたいwaveかmp3です。右上が「ループ間」になっていることを確認してOKを押すと、設定した場所に曲が書き出されます。<br>
-デフォでは「Mixdown」というファイル名です。</p>
+  <!-- omit in toc -->
+  <h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC1%E5%9B%9E">CCS DTM講座'21 第1回</h1>
+  <!-- omit in toc -->
+  <ul>
+    <li><a href="#12-daw%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B">1.2 DAWに触れる</a></li>
+    <ul>
+      <li><a href="#123-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99%E5%89%8D%E3%81%AB">1.2.3 曲を書き出す前に</a></li>
+      <li><a href="#124-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99">1.2.4 曲を書き出す</a></li>
+    </ul>
+  </ul>
+  <p>※筆者はStudio One有料版を使っているので、皆様の手元にはない謎の項目などが画像内にあるかもしれないです。<br>
+  多少混乱するかもしれませんがご了承ください。</p>
+
+  <h2 id="12-daw%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B">1.2 DAWに触れる</h2>
+
+  <p>DAWを起動すると、以下のような画面が表示されます。</p>
+  <img src="./images/dtm019.png" alt=""><br>
+  <img src="./images/dtm_ad_1_01.png" alt="">
+  <p>「新規ソング」をクリックしたのち、設定は特に変えず、OKをクリックしてください。(左上に丸ついてますが気にしないで)</p>
+  <img src="./images/dtm020.png" alt="">
+  <p>この画面になったら、右の「インストゥルメント」をクリック。右になんか出ると思うのでそのうちの「PreSonus」をクリック。</p>
+  <img src="./images/dtm_ad_1_02.png" alt="">
+  <p>「Presence」ってのがあると思うのでこれを赤矢印のように左にドラッグしてください。そうすると立ち上がります。下のような画面が出ると思います。<br>
+  (出てないときは、左側の「Presence」と書いてあるところの右側にあるピアノマークをクリックしてください。)</p>
+  <img src="./images/dtm_ad_1_03.png" alt="">
+  <p>上の画面で、赤丸付けた所をクリックして、「Keyboards」→「Grand Piano」を選択してください。ピアノの音になります。</p>
+  <img src="./images/dtm_ad_1_04.png" alt=""><br>
+  <img src="./images/dtm_ad_1_05.png" alt="">
+  <p>元の画面に戻ります。次に、左上の「イベント」→「インストゥルメントパートを挿入」をクリック。なんか青い四角(青くないかも)が真ん中の空間に出てくると思います。</p>
+  <img src="./images/dtm_ad_1_06.png" alt="">
+  <p>これが音を入力する場所です。(入力する音のことを<strong>ノート(note)</strong>といいます。覚えて下さい)黄色丸の部分をドラッグすると伸ばせます。適宜伸ばしといてください。</p>
+  <img src="./images/dtm_ad_1_07.png" alt="">
+  <p>次に、青い四角を一回クリックしてから、右下の「編集」という所をクリックすると、ピアノロールが開きます。開いたら、「スナップ」を「順応」に変更してください。16分音符より細かい音符や三連符を入力したい方は、適宜クオンタイズの値を変更してみてください。<br>
+  (分数の表示になってると思います。1/n=n分音符ってことです)<br>
+  黄色丸のとこらへんを上下にドラッグすると画面の大きさが変えられます。</p>
+  <img src="./images/dtm_ad_1_07_1.png" alt="">
+  <p>さて、いよいよ入力です。少々複雑ですが、付いて来れることを願っています。</p>
+  <p><strong>Ctrlキーを押しながら</strong>ドラッグすると、ノートが入力されます。Ctrlを押したままもう一度入力したノートをクリックすると、消せます。<br>
+  入力後、<strong>Ctrlを押さずに</strong>ドラッグすると移動できます。また、黄色丸の部分をつかむと長さを変えられます。</p>
+  <p>入力中、上下にドラッグするとノートごとの音量(<strong>ベロシティ(velocity)</strong>といいます)が変えられます。ベロシティは下にある赤丸つけた謎の棒をドラッグでも変えられます。</p>
+  <p>Ctrlを押すやり方以外にも、左ちょい上、緑丸の所をクリックすればノートが置けます。その場合、ピンク丸のとこをクリックすればもとに戻ります。</p>
+
+  <h3 id="123-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99%E5%89%8D%E3%81%AB">1.2.3 曲を書き出す前に</h3>
+
+  <img src="./images/dtm_ad_1_08.png" alt="">
+  <p>フェーダーは、上の画像の右下、赤丸で囲った「ミックス」をクリックして青くすると出てきます。左の方のフェーダーで調節しましょう。いじってはいけないのは右側のMainです。</p>
+  <h3 id="124-%E6%9B%B2%E3%82%92%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99">1.2.4 曲を書き出す</h3>
+  <img src="./images/dtm_ad_1_09.png" alt="">
+  <p>上画像赤丸の三角形みたいな形のところを、左端から曲が終わる一小節後くらいまでドラッグしてください。多分最初は左端にあると思います。</p>
+  <img src="./images/dtm_ad_1_10.png" alt="">
+  <p>これでループが設定されるので、左上の「ソング」→「ミックスダウンをエクスポート」をクリックしてください。</p>
+  <img src="./images/dtm_ad_1_11.png" alt="">
+  <p>左の出力形式は何でもいいです。だいたいwaveかmp3です。右上が「ループ間」になっていることを確認してOKを押すと、設定した場所に曲が書き出されます。<br>
+  デフォルトでは「Mixdown」というファイル名です。</p>
 
 </body>
 </html>
