@@ -6,10 +6,10 @@
 
 
 body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif); 
-	font-size: var(--vscode-markdown-font-size, 14px);
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 16px);
 	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
+	line-height: var(--vscode-markdown-line-height, 25px);
 	word-wrap: break-word;
 }
 
@@ -22,16 +22,16 @@ body {
 	text-align: center;
 	font-size: 12px;
 	font-family: sans-serif;
-	background-color:#444444;
+	background-color: #444444;
 	cursor: pointer;
 	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
 }
 
 #code-csp-warning:hover {
 	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+	background-color: #007acc;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
 }
 
 body.scrollBeyondLastLine {
@@ -94,8 +94,9 @@ body.showEditorSelection li.code-line:hover:before {
 }
 
 img {
-	max-width: 100%;
-	max-height: 100%;
+	display: block;
+	margin: 2rem auto;
+	max-width: 1200px;
 }
 
 a {
@@ -127,7 +128,9 @@ h1 {
 	border-bottom-style: solid;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
 	font-weight: normal;
 }
 
@@ -140,14 +143,14 @@ table > thead > tr > th {
 	border-bottom: 1px solid;
 }
 
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
+table>thead>tr>th,
+table>thead>tr>td,
+table>tbody>tr>th,
+table>tbody>tr>td {
 	padding: 5px 10px;
 }
 
-table > tbody > tr + tr > td {
+table>tbody>tr+tr>td {
 	border-top: 1px solid;
 }
 
@@ -169,7 +172,7 @@ body.wordWrap pre {
 }
 
 pre:not(.hljs),
-pre.hljs code > div {
+pre.hljs code>div {
 	padding: 16px;
 	border-radius: 3px;
 	overflow: auto;
@@ -199,23 +202,23 @@ pre code {
 	border-color: rgb(0, 0, 0);
 }
 
-.vscode-light table > thead > tr > th {
+.vscode-light table>thead>tr>th {
 	border-color: rgba(0, 0, 0, 0.69);
 }
 
-.vscode-dark table > thead > tr > th {
+.vscode-dark table>thead>tr>th {
 	border-color: rgba(255, 255, 255, 0.69);
 }
 
 .vscode-light h1,
 .vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
+.vscode-light table>tbody>tr+tr>td {
 	border-color: rgba(0, 0, 0, 0.18);
 }
 
 .vscode-dark h1,
 .vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
+.vscode-dark table>tbody>tr+tr>td {
 	border-color: rgba(255, 255, 255, 0.18);
 }
 
@@ -299,10 +302,10 @@ pre code {
  * Markdown PDF CSS
  */
 
- body {
+body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
 
-	
+
 	padding: 0 12px;
 }
 
@@ -335,8 +338,9 @@ code {
 }
 
 /* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
+:not(pre):not(.hljs)>code {
+	color: #C9AE75;
+	/* Change the old color so it seems less like an error */
 	font-size: inherit;
 }
 

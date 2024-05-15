@@ -1,366 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
 <head>
-<title>おまけ・エフェクト編</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>おまけ・エフェクト編</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-<style>
-  /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-  /*---------------------------------------------------------------------------------------------
-  *  Copyright (c) Microsoft Corporation. All rights reserved.
-  *  Licensed under the MIT License. See License.txt in the project root for license information.
-  *--------------------------------------------------------------------------------------------*/
+  <link type="text/css" rel="stylesheet" href="../style.css">
 
-  body {
-    font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif); 
-    font-size: var(--vscode-markdown-font-size, 14px);
-    padding: 0 26px;
-    line-height: var(--vscode-markdown-line-height, 22px);
-    word-wrap: break-word;
-  }
 
-  #code-csp-warning {
-    position: fixed;
-    top: 0;
-    right: 0;
-    color: white;
-    margin: 16px;
-    text-align: center;
-    font-size: 12px;
-    font-family: sans-serif;
-    background-color:#444444;
-    cursor: pointer;
-    padding: 6px;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-  }
-
-  #code-csp-warning:hover {
-    text-decoration: none;
-    background-color:#007acc;
-    box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-  }
-
-  body.scrollBeyondLastLine {
-    margin-bottom: calc(100vh - 22px);
-  }
-
-  body.showEditorSelection .code-line {
-    position: relative;
-  }
-
-  body.showEditorSelection .code-active-line:before,
-  body.showEditorSelection .code-line:hover:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: -12px;
-    height: 100%;
-  }
-
-  body.showEditorSelection li.code-active-line:before,
-  body.showEditorSelection li.code-line:hover:before {
-    left: -30px;
-  }
-
-  .vscode-light.showEditorSelection .code-active-line:before {
-    border-left: 3px solid rgba(0, 0, 0, 0.15);
-  }
-
-  .vscode-light.showEditorSelection .code-line:hover:before {
-    border-left: 3px solid rgba(0, 0, 0, 0.40);
-  }
-
-  .vscode-light.showEditorSelection .code-line .code-line:hover:before {
-    border-left: none;
-  }
-
-  .vscode-dark.showEditorSelection .code-active-line:before {
-    border-left: 3px solid rgba(255, 255, 255, 0.4);
-  }
-
-  .vscode-dark.showEditorSelection .code-line:hover:before {
-    border-left: 3px solid rgba(255, 255, 255, 0.60);
-  }
-
-  .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-    border-left: none;
-  }
-
-  .vscode-high-contrast.showEditorSelection .code-active-line:before {
-    border-left: 3px solid rgba(255, 160, 0, 0.7);
-  }
-
-  .vscode-high-contrast.showEditorSelection .code-line:hover:before {
-    border-left: 3px solid rgba(255, 160, 0, 1);
-  }
-
-  .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-    border-left: none;
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  a:focus,
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: 1px solid -webkit-focus-ring-color;
-    outline-offset: -1px;
-  }
-
-  hr {
-    border: 0;
-    height: 2px;
-    border-bottom: 2px solid;
-  }
-
-  h1 {
-    padding-bottom: 0.3em;
-    line-height: 1.2;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-  }
-
-  h1, h2, h3 {
-    font-weight: normal;
-  }
-
-  table {
-    border-collapse: collapse;
-  }
-
-  table > thead > tr > th {
-    text-align: left;
-    border-bottom: 1px solid;
-  }
-
-  table > thead > tr > th,
-  table > thead > tr > td,
-  table > tbody > tr > th,
-  table > tbody > tr > td {
-    padding: 5px 10px;
-  }
-
-  table > tbody > tr + tr > td {
-    border-top: 1px solid;
-  }
-
-  blockquote {
-    margin: 0 7px 0 5px;
-    padding: 0 16px 0 10px;
-    border-left-width: 5px;
-    border-left-style: solid;
-  }
-
-  code {
-    font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-    font-size: 1em;
-    line-height: 1.357em;
-  }
-
-  body.wordWrap pre {
-    white-space: pre-wrap;
-  }
-
-  pre:not(.hljs),
-  pre.hljs code > div {
-    padding: 16px;
-    border-radius: 3px;
-    overflow: auto;
-  }
-
-  pre code {
-    color: var(--vscode-editor-foreground);
-    tab-size: 4;
-  }
-
-  /** Theming */
-
-  .vscode-light pre {
-    background-color: rgba(220, 220, 220, 0.4);
-  }
-
-  .vscode-dark pre {
-    background-color: rgba(10, 10, 10, 0.4);
-  }
-
-  .vscode-high-contrast pre {
-    background-color: rgb(0, 0, 0);
-  }
-
-  .vscode-high-contrast h1 {
-    border-color: rgb(0, 0, 0);
-  }
-
-  .vscode-light table > thead > tr > th {
-    border-color: rgba(0, 0, 0, 0.69);
-  }
-
-  .vscode-dark table > thead > tr > th {
-    border-color: rgba(255, 255, 255, 0.69);
-  }
-
-  .vscode-light h1,
-  .vscode-light hr,
-  .vscode-light table > tbody > tr + tr > td {
-    border-color: rgba(0, 0, 0, 0.18);
-  }
-
-  .vscode-dark h1,
-  .vscode-dark hr,
-  .vscode-dark table > tbody > tr + tr > td {
-    border-color: rgba(255, 255, 255, 0.18);
-  }
-
-
-  /* Tomorrow Theme */
-  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-  /* Tomorrow Comment */
-  .hljs-comment,
-  .hljs-quote {
-    color: #8e908c;
-  }
-
-  /* Tomorrow Red */
-  .hljs-variable,
-  .hljs-template-variable,
-  .hljs-tag,
-  .hljs-name,
-  .hljs-selector-id,
-  .hljs-selector-class,
-  .hljs-regexp,
-  .hljs-deletion {
-    color: #c82829;
-  }
-
-  /* Tomorrow Orange */
-  .hljs-number,
-  .hljs-built_in,
-  .hljs-builtin-name,
-  .hljs-literal,
-  .hljs-type,
-  .hljs-params,
-  .hljs-meta,
-  .hljs-link {
-    color: #f5871f;
-  }
-
-  /* Tomorrow Yellow */
-  .hljs-attribute {
-    color: #eab700;
-  }
-
-  /* Tomorrow Green */
-  .hljs-string,
-  .hljs-symbol,
-  .hljs-bullet,
-  .hljs-addition {
-    color: #718c00;
-  }
-
-  /* Tomorrow Blue */
-  .hljs-title,
-  .hljs-section {
-    color: #4271ae;
-  }
-
-  /* Tomorrow Purple */
-  .hljs-keyword,
-  .hljs-selector-tag {
-    color: #8959a8;
-  }
-
-  .hljs {
-    display: block;
-    overflow-x: auto;
-    color: #4d4d4c;
-    padding: 0.5em;
-  }
-
-  .hljs-emphasis {
-    font-style: italic;
-  }
-
-  .hljs-strong {
-    font-weight: bold;
-  }
-
-
-  /*
-  * Markdown PDF CSS
-  */
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-
-    
-    padding: 0 12px;
-  }
-
-  pre {
-    background-color: #f8f8f8;
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-  }
-
-  pre:not(.hljs) {
-    padding: 23px;
-    line-height: 19px;
-  }
-
-  blockquote {
-    background: rgba(127, 127, 127, 0.1);
-    border-color: rgba(0, 122, 204, 0.5);
-  }
-
-  .emoji {
-    height: 1.4em;
-  }
-
-  code {
-    font-size: 14px;
-    line-height: 19px;
-  }
-
-  /* for inline code */
-  :not(pre):not(.hljs) > code {
-    color: #C9AE75; /* Change the old color so it seems less like an error */
-    font-size: inherit;
-  }
-
-  /* Page Break : use <div class="page"/> to insert page break
-  -------------------------------------------------------- */
-  .page {
-    page-break-after: always;
-  }
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
+
 <body>
   <script>
     mermaid.initialize({
       startOnLoad: true,
       theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
+        ? 'dark'
+        : 'default'
     });
   </script>
   <!-- omit in toc -->
@@ -397,31 +54,39 @@
 
   <h2 id="101effect">10.1 エフェクトの基礎</h2>
 
-  <p>ここでは、様々なエフェクト(の一部)を紹介し、各エフェクトをかけられるおすすめのフリープラグインを掲示しておきます。ちなみに、Cakewalkでは全て内蔵プラグインが存在するみたいです。(が、外部のを使ったほうが取り回しがいいと思います。)</p>
+  <p>
+    ここでは、様々なエフェクト(の一部)を紹介し、各エフェクトをかけられるおすすめのフリープラグインを掲示しておきます。ちなみに、Cakewalkでは全て内蔵プラグインが存在するみたいです。(が、外部のを使ったほうが取り回しがいいと思います。)
+  </p>
 
   <h3 id="1011equalizer">10.1.1 EQ(イコライザー、Equalizer)</h3>
 
-  <p>皆さんが一番よく知っている働きをするエフェクトかもしれません。各周波数ごとに、その振幅を大きくしたり小さくしたりすることで音色の調整を行うエフェクトです。いろいろな音楽プレイヤーに実装されているので、使ったことがある方も多いのではないかと思います。超高音、超低音を切るローパス、ハイパスフィルターも基本的についてきます。<br>
-  おすすめは<a href="https://www.tokyodawn.net/tdr-nova/">TDR Nova</a>です。フリーながら多機能です。</p>
+  <p>
+    皆さんが一番よく知っている働きをするエフェクトかもしれません。各周波数ごとに、その振幅を大きくしたり小さくしたりすることで音色の調整を行うエフェクトです。いろいろな音楽プレイヤーに実装されているので、使ったことがある方も多いのではないかと思います。超高音、超低音を切るローパス、ハイパスフィルターも基本的についてきます。<br>
+    おすすめは<a href="https://www.tokyodawn.net/tdr-nova/">TDR Nova</a>です。フリーながら多機能です。</p>
 
   <h3 id="1012reverb">10.1.2 リバーブ(Reverb)</h3>
 
   <p>人間は残響の具合から、空間を推測することができます。リバーブは残響を人工的に生み出して、音が響く空間を再現するエフェクトです。(ほわ～とした感じの音を付加します。)</p>
-  筆者はシンセ内蔵のリバーブで何とかしちゃうので特におすすめはないんですけど、<a href="https://www.bestservice.com/halls_of_fame_3_free.html">Halls of Fame 3</a>というのがなかなか好評みたいです。<br>
-  バカデカ空間にしたい人は<a href="https://valhalladsp.com/shop/reverb/valhalla-supermassive/">Valhalla Super Massive</a>が良いのではないでしょうか。</p>
+  筆者はシンセ内蔵のリバーブで何とかしちゃうので特におすすめはないんですけど、<a href="https://www.bestservice.com/halls_of_fame_3_free.html">Halls of Fame
+    3</a>というのがなかなか好評みたいです。<br>
+  バカデカ空間にしたい人は<a href="https://valhalladsp.com/shop/reverb/valhalla-supermassive/">Valhalla Super
+    Massive</a>が良いのではないでしょうか。</p>
   <p>やまびこのように反響させるエコー、短い時間の反響を生み出すディレイとともに空間系エフェクトと呼ばれています。エコーとディレイはあまり明確な区別がないように見えます。</p>
 
   <h3 id="1013compressor">10.1.3 コンプレッサー(Comp,Compressor)</h3>
 
-  <p>特に自ら録音した音などは、場所によって音が大きかったり、小さかったりしてそのまま使うには難しいことが多いです。コンプレッサーはそんな音の大小差(ダイナミクスという)を圧縮(compress)して良い感じの音量に整えてくれるエフェクトです。コンプって略すことが多い。<br>
-  原理は、ある一定の音量ライン(閾値(threshold)という)を超えた音を、ある比率(ratio)で圧縮するといった感じです。最後に全体の音量を上げることで、加工前と音量は変えず、均された音にできます。</p>
+  <p>
+    特に自ら録音した音などは、場所によって音が大きかったり、小さかったりしてそのまま使うには難しいことが多いです。コンプレッサーはそんな音の大小差(ダイナミクスという)を圧縮(compress)して良い感じの音量に整えてくれるエフェクトです。コンプって略すことが多い。<br>
+    原理は、ある一定の音量ライン(閾値(threshold)という)を超えた音を、ある比率(ratio)で圧縮するといった感じです。最後に全体の音量を上げることで、加工前と音量は変えず、均された音にできます。</p>
   <p>イラストで表すとこんな感じです。</p>
-  <img src="./images/comp.png">
+  <img src="../images/comp.png">
   <p>あとほっそい音を太くして他のパートに埋もれないようにする使い方もあります。</p>
   <p>ただやりすぎると音が変になったりメリハリが失われたりするのでほどほどに。</p>
-  <p>内蔵のでもいいですが、おすすめは<a href="https://xferrecords.com/freeware/">Xfer Records OTT</a>です。これはどちらかというと音を太くするときに使うやつですね。これを適当にかけるだけで今風の音になります。<br>
-  OTTは低中高域3段階の帯域ごとにコンプのかかり具合を調節できるようになっています(こういうのをマルチバンドコンプといいます)。</p>
-  <p>音色を大きく変えないものとしては、<a href="https://www.tokyodawn.net/tdr-kotelnikov/">TDR Kotelnikov</a>があります。どちらかというとマスタリングとかのときに重宝しそうです。</p>
+  <p>内蔵のでもいいですが、おすすめは<a href="https://xferrecords.com/freeware/">Xfer Records
+      OTT</a>です。これはどちらかというと音を太くするときに使うやつですね。これを適当にかけるだけで今風の音になります。<br>
+    OTTは低中高域3段階の帯域ごとにコンプのかかり具合を調節できるようになっています(こういうのをマルチバンドコンプといいます)。</p>
+  <p>音色を大きく変えないものとしては、<a href="https://www.tokyodawn.net/tdr-kotelnikov/">TDR
+      Kotelnikov</a>があります。どちらかというとマスタリングとかのときに重宝しそうです。</p>
 
   <h3 id="1014dynamiceq">10.1.4 ダイナミックEQ(Dynamic EQ)</h3>
 
@@ -431,19 +96,22 @@
   <h3 id="1015limiter">10.1.5 リミッター、マキシマイザー(Limiter, Maximizer)</h3>
 
   <p>リミッターはその名の通り、音の大きさを制限するエフェクトです。マキシマイザーは音圧を上げるエフェクトです。<br>
-  これら二つは前述のコンプレッサーと実は原理がほぼ同じです。ratioがバカでかいという違いだけです。なのでここら辺も区別が曖昧なところがあります。</p>
+    これら二つは前述のコンプレッサーと実は原理がほぼ同じです。ratioがバカでかいという違いだけです。なのでここら辺も区別が曖昧なところがあります。</p>
   <p>リミッターは主に、マスタートラックで音がピンポイントでデカくなってクリップを起こす、といったことを防ぐために使います。<br>
-  一方マキシマイザーはマスターで音圧(音量の大きさの平均値の大きさみたいなやつ)を上げて迫力を出すためのものです。とはいうものの上述の通り区別は曖昧ですが……</p>
-  <p>筆者が使っているのは<a href="http://www.yohng.com/software/w1limit.html">W1 Limiter</a>ですが、世間一般ではこのリミッター(の元となったもの)はもう時代遅れらしいのでもう一つ紹介しておきます。<br>
-  <a href="https://kilohearts.com/products/limiter">kiloHearts Limiter</a>です。</p>
+    一方マキシマイザーはマスターで音圧(音量の大きさの平均値の大きさみたいなやつ)を上げて迫力を出すためのものです。とはいうものの上述の通り区別は曖昧ですが……</p>
+  <p>筆者が使っているのは<a href="http://www.yohng.com/software/w1limit.html">W1
+      Limiter</a>ですが、世間一般ではこのリミッター(の元となったもの)はもう時代遅れらしいのでもう一つ紹介しておきます。<br>
+    <a href="https://kilohearts.com/products/limiter">kiloHearts Limiter</a>です。
+  </p>
   <p>マキシマイザーだと<a href="https://plugins4free.com/plugin/2843/">Unlimited</a>というのがあります。</p>
 
   <h3 id="1016distortion">10.1.6 ディストーション(Distortion)</h3>
 
   <p>ディストーションは、音量を上げすぎて上限を超えてしまったときに起こる音の歪み、クリップを再現するエフェクトです。オーバードライブやサチュレーションも大体同じです。<br>
-  波形が上限にぶち当たって強制的に押さえつけられるので、ノイズや音割れが混ざった音を作ることができます。<br>
-  あまり使わなさそうなキワモノエフェクトだと思われるかもしれないですが、細いドラムの音などにほんの少量だけかけて目立つようにするといった、前述のコンプのような使い方で意外と使います。</p>
-  <p><a href="https://www.mi7.co.jp/products/softube/satknob/">Saturation Knob</a>は操作が簡単でオススメです。強烈な歪みが欲しい場合は、<a href="https://www.audiopluginsforfree.com/camelcrusher/">Camel Crusher</a>もいいと思います。</p>
+    波形が上限にぶち当たって強制的に押さえつけられるので、ノイズや音割れが混ざった音を作ることができます。<br>
+    あまり使わなさそうなキワモノエフェクトだと思われるかもしれないですが、細いドラムの音などにほんの少量だけかけて目立つようにするといった、前述のコンプのような使い方で意外と使います。</p>
+  <p><a href="https://www.mi7.co.jp/products/softube/satknob/">Saturation Knob</a>は操作が簡単でオススメです。強烈な歪みが欲しい場合は、<a
+      href="https://www.audiopluginsforfree.com/camelcrusher/">Camel Crusher</a>もいいと思います。</p>
 
   <h2 id="102mix">10.2 ミックス基礎2</h2>
 
@@ -451,17 +119,20 @@
 
   <h3 id="1021eqcut">10.2.1 EQで帯域カット</h3>
 
-  <p>まず、キックとベースの超低音域(30Hz以下を目安に)を急なハイパスフィルターで切ります(そもそも聴環境によっては聴こえない)。キックとベースで切る周波数をちょっとズラすといいみたいです(キック30Hz, ベース50Hzみたいな具合)。それ以外のパートは100Hz以下を目安にハイパスフィルターで切ります。これで低音域をキックとベース専用の音域にできます。20Khz以上も同様にローパスフィルターで切ります。</p>
+  <p>まず、キックとベースの超低音域(30Hz以下を目安に)を急なハイパスフィルターで切ります(そもそも聴環境によっては聴こえない)。キックとベースで切る周波数をちょっとズラすといいみたいです(キック30Hz,
+    ベース50Hzみたいな具合)。それ以外のパートは100Hz以下を目安にハイパスフィルターで切ります。これで低音域をキックとベース専用の音域にできます。20Khz以上も同様にローパスフィルターで切ります。</p>
   <p>ジャンルによっては切らなくてもいいという説もあります(は？ミックスわからん)。</p>
 
   <h3 id="1022compeq">10.2.2 コンプ、EQをかける</h3>
 
-  <p>コンプをかけて音の大きさをある程度揃えたら、EQで楽器ごとに被っている帯域を下げて、それぞれの楽器に場所を開けておきます。ここで、目立たせたい帯域を上げてもいいですが、そのようなブーストはできる限り控えるべきで、やるとしてもほんの僅か、というのが一般論です。</p>
+  <p>
+    コンプをかけて音の大きさをある程度揃えたら、EQで楽器ごとに被っている帯域を下げて、それぞれの楽器に場所を開けておきます。ここで、目立たせたい帯域を上げてもいいですが、そのようなブーストはできる限り控えるべきで、やるとしてもほんの僅か、というのが一般論です。
+  </p>
 
   <h3 id="1023ambience">10.2.3 空間系をかける</h3>
 
   <p>リバーブなどをかけて奥行きを調整します。きつくかけると遠くから聞こえてくる感じになります。<br>
-  あまりかけすぎるとゴワゴワしてよく分からなくなるので、ほどほどがいいと思います。</p>
+    あまりかけすぎるとゴワゴワしてよく分からなくなるので、ほどほどがいいと思います。</p>
   <p>本当はバストラックとかセンドとか使ってかける方がいいんですが説明は割愛。自分で調べてみてください。</p>
 
   <h2 id="103footer">10.3 おわりに</h2>
@@ -475,4 +146,5 @@
   </ul>
 
 </body>
+
 </html>

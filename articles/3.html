@@ -1,366 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
 <head>
-<title>第3回</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>第3回</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-<style>
-  /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-  /*---------------------------------------------------------------------------------------------
-  *  Copyright (c) Microsoft Corporation. All rights reserved.
-  *  Licensed under the MIT License. See License.txt in the project root for license information.
-  *--------------------------------------------------------------------------------------------*/
+  <link type="text/css" rel="stylesheet" href="../style.css">
 
-  body {
-    font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif); 
-    font-size: var(--vscode-markdown-font-size, 14px);
-    padding: 0 26px;
-    line-height: var(--vscode-markdown-line-height, 22px);
-    word-wrap: break-word;
-  }
 
-  #code-csp-warning {
-    position: fixed;
-    top: 0;
-    right: 0;
-    color: white;
-    margin: 16px;
-    text-align: center;
-    font-size: 12px;
-    font-family: sans-serif;
-    background-color:#444444;
-    cursor: pointer;
-    padding: 6px;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-  }
-
-  #code-csp-warning:hover {
-    text-decoration: none;
-    background-color:#007acc;
-    box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-  }
-
-  body.scrollBeyondLastLine {
-    margin-bottom: calc(100vh - 22px);
-  }
-
-  body.showEditorSelection .code-line {
-    position: relative;
-  }
-
-  body.showEditorSelection .code-active-line:before,
-  body.showEditorSelection .code-line:hover:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: -12px;
-    height: 100%;
-  }
-
-  body.showEditorSelection li.code-active-line:before,
-  body.showEditorSelection li.code-line:hover:before {
-    left: -30px;
-  }
-
-  .vscode-light.showEditorSelection .code-active-line:before {
-    border-left: 3px solid rgba(0, 0, 0, 0.15);
-  }
-
-  .vscode-light.showEditorSelection .code-line:hover:before {
-    border-left: 3px solid rgba(0, 0, 0, 0.40);
-  }
-
-  .vscode-light.showEditorSelection .code-line .code-line:hover:before {
-    border-left: none;
-  }
-
-  .vscode-dark.showEditorSelection .code-active-line:before {
-    border-left: 3px solid rgba(255, 255, 255, 0.4);
-  }
-
-  .vscode-dark.showEditorSelection .code-line:hover:before {
-    border-left: 3px solid rgba(255, 255, 255, 0.60);
-  }
-
-  .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-    border-left: none;
-  }
-
-  .vscode-high-contrast.showEditorSelection .code-active-line:before {
-    border-left: 3px solid rgba(255, 160, 0, 0.7);
-  }
-
-  .vscode-high-contrast.showEditorSelection .code-line:hover:before {
-    border-left: 3px solid rgba(255, 160, 0, 1);
-  }
-
-  .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-    border-left: none;
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  a:focus,
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: 1px solid -webkit-focus-ring-color;
-    outline-offset: -1px;
-  }
-
-  hr {
-    border: 0;
-    height: 2px;
-    border-bottom: 2px solid;
-  }
-
-  h1 {
-    padding-bottom: 0.3em;
-    line-height: 1.2;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-  }
-
-  h1, h2, h3 {
-    font-weight: normal;
-  }
-
-  table {
-    border-collapse: collapse;
-  }
-
-  table > thead > tr > th {
-    text-align: left;
-    border-bottom: 1px solid;
-  }
-
-  table > thead > tr > th,
-  table > thead > tr > td,
-  table > tbody > tr > th,
-  table > tbody > tr > td {
-    padding: 5px 10px;
-  }
-
-  table > tbody > tr + tr > td {
-    border-top: 1px solid;
-  }
-
-  blockquote {
-    margin: 0 7px 0 5px;
-    padding: 0 16px 0 10px;
-    border-left-width: 5px;
-    border-left-style: solid;
-  }
-
-  code {
-    font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-    font-size: 1em;
-    line-height: 1.357em;
-  }
-
-  body.wordWrap pre {
-    white-space: pre-wrap;
-  }
-
-  pre:not(.hljs),
-  pre.hljs code > div {
-    padding: 16px;
-    border-radius: 3px;
-    overflow: auto;
-  }
-
-  pre code {
-    color: var(--vscode-editor-foreground);
-    tab-size: 4;
-  }
-
-  /** Theming */
-
-  .vscode-light pre {
-    background-color: rgba(220, 220, 220, 0.4);
-  }
-
-  .vscode-dark pre {
-    background-color: rgba(10, 10, 10, 0.4);
-  }
-
-  .vscode-high-contrast pre {
-    background-color: rgb(0, 0, 0);
-  }
-
-  .vscode-high-contrast h1 {
-    border-color: rgb(0, 0, 0);
-  }
-
-  .vscode-light table > thead > tr > th {
-    border-color: rgba(0, 0, 0, 0.69);
-  }
-
-  .vscode-dark table > thead > tr > th {
-    border-color: rgba(255, 255, 255, 0.69);
-  }
-
-  .vscode-light h1,
-  .vscode-light hr,
-  .vscode-light table > tbody > tr + tr > td {
-    border-color: rgba(0, 0, 0, 0.18);
-  }
-
-  .vscode-dark h1,
-  .vscode-dark hr,
-  .vscode-dark table > tbody > tr + tr > td {
-    border-color: rgba(255, 255, 255, 0.18);
-  }
-
-
-  /* Tomorrow Theme */
-  /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-  /* Tomorrow Comment */
-  .hljs-comment,
-  .hljs-quote {
-    color: #8e908c;
-  }
-
-  /* Tomorrow Red */
-  .hljs-variable,
-  .hljs-template-variable,
-  .hljs-tag,
-  .hljs-name,
-  .hljs-selector-id,
-  .hljs-selector-class,
-  .hljs-regexp,
-  .hljs-deletion {
-    color: #c82829;
-  }
-
-  /* Tomorrow Orange */
-  .hljs-number,
-  .hljs-built_in,
-  .hljs-builtin-name,
-  .hljs-literal,
-  .hljs-type,
-  .hljs-params,
-  .hljs-meta,
-  .hljs-link {
-    color: #f5871f;
-  }
-
-  /* Tomorrow Yellow */
-  .hljs-attribute {
-    color: #eab700;
-  }
-
-  /* Tomorrow Green */
-  .hljs-string,
-  .hljs-symbol,
-  .hljs-bullet,
-  .hljs-addition {
-    color: #718c00;
-  }
-
-  /* Tomorrow Blue */
-  .hljs-title,
-  .hljs-section {
-    color: #4271ae;
-  }
-
-  /* Tomorrow Purple */
-  .hljs-keyword,
-  .hljs-selector-tag {
-    color: #8959a8;
-  }
-
-  .hljs {
-    display: block;
-    overflow-x: auto;
-    color: #4d4d4c;
-    padding: 0.5em;
-  }
-
-  .hljs-emphasis {
-    font-style: italic;
-  }
-
-  .hljs-strong {
-    font-weight: bold;
-  }
-
-
-  /*
-  * Markdown PDF CSS
-  */
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-
-    
-    padding: 0 12px;
-  }
-
-  pre {
-    background-color: #f8f8f8;
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-  }
-
-  pre:not(.hljs) {
-    padding: 23px;
-    line-height: 19px;
-  }
-
-  blockquote {
-    background: rgba(127, 127, 127, 0.1);
-    border-color: rgba(0, 122, 204, 0.5);
-  }
-
-  .emoji {
-    height: 1.4em;
-  }
-
-  code {
-    font-size: 14px;
-    line-height: 19px;
-  }
-
-  /* for inline code */
-  :not(pre):not(.hljs) > code {
-    color: #C9AE75; /* Change the old color so it seems less like an error */
-    font-size: inherit;
-  }
-
-  /* Page Break : use <div class="page"/> to insert page break
-  -------------------------------------------------------- */
-  .page {
-    page-break-after: always;
-  }
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
+
 <body>
   <script>
     mermaid.initialize({
       startOnLoad: true,
       theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
+        ? 'dark'
+        : 'default'
     });
   </script>
   <!-- omit in toc -->
@@ -369,81 +26,105 @@
   <h2 id="%E7%9B%AE%E6%AC%A1">目次</h2>
 
   <ul>
-    <li><a href="#3-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E2%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89">3 音楽理論基礎2(スケール、キー、コード)</a></li>
+    <li><a
+        href="#3-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E2%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89">3
+        音楽理論基礎2(スケール、キー、コード)</a></li>
     <li><a href="#31-%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">3.1 スケール</a></li>
     <li><a href="#32-%E3%82%AD%E3%83%BC">3.2 キー</a></li>
     <li><a href="#33-%E3%82%B3%E3%83%BC%E3%83%89">3.3 コード</a>
       <ul>
-        <li><a href="#331-%E3%83%80%E3%82%A4%E3%82%A2%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B3%E3%83%BC%E3%83%89">3.3.1 ダイアトニックコード</a></li>
-        <li><a href="#332-%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%81%A8%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88%E3%82%B5%E3%83%96%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88">3.3.2 トニックとドミナント、サブドミナント</a></li>
-        <li><a href="#333-%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E9%80%B2%E8%A1%8C">3.3.3 よくあるコード進行</a></li>
+        <li><a
+            href="#331-%E3%83%80%E3%82%A4%E3%82%A2%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B3%E3%83%BC%E3%83%89">3.3.1
+            ダイアトニックコード</a></li>
+        <li><a
+            href="#332-%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%81%A8%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88%E3%82%B5%E3%83%96%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88">3.3.2
+            トニックとドミナント、サブドミナント</a></li>
+        <li><a href="#333-%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E9%80%B2%E8%A1%8C">3.3.3
+            よくあるコード進行</a></li>
       </ul>
     </li>
     <li><a href="#34-%E3%83%99%E3%83%BC%E3%82%B9%E4%BD%9C%E6%88%90">3.4 ベース作成</a>
       <ul>
-        <li><a href="#341-%E3%82%B3%E3%83%BC%E3%83%89%E8%B1%86%E7%9F%A5%E8%AD%98%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%AF%E6%AC%A1%E5%9B%9E">3.4.1 コード豆知識(詳しくは次回)</a></li>
+        <li><a
+            href="#341-%E3%82%B3%E3%83%BC%E3%83%89%E8%B1%86%E7%9F%A5%E8%AD%98%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%AF%E6%AC%A1%E5%9B%9E">3.4.1
+            コード豆知識(詳しくは次回)</a></li>
       </ul>
     </li>
-    <li><a href="#35-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">3.5 今日やった大事なこと(覚えてね！)</a></li>
+    <li><a
+        href="#35-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">3.5
+        今日やった大事なこと(覚えてね！)</a></li>
     <li><a href="#36-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">3.6 おわりに</a></li>
     <li><a href="#37-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">3.7 参考にした資料</a></li>
   </ul>
 
-  <h2 id="3-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E2%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89">3 音楽理論基礎2(スケール、キー、コード)</h2>
+  <h2
+    id="3-%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E2%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89">
+    3 音楽理論基礎2(スケール、キー、コード)</h2>
 
   <p>今回は前回のスケールの話を発展させて、キー、コードについても解説していきます。</p>
   <h2 id="31-%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">3.1 スケール</h2>
   <p>前回から「メジャースケール」や「マイナースケール」などといった単語が定義もなく現れていました。今回はこれらの単語の説明をしましょう。
-  スケールというのは、ざっくり音階と説明しましたが、もう少し真面目に説明すると、音の間隔によって使う音を決める仕組みのことです。</p>
+    スケールというのは、ざっくり音階と説明しましたが、もう少し真面目に説明すると、音の間隔によって使う音を決める仕組みのことです。</p>
   <p>用語を定義します。「半音」とは、隣り合った鍵盤の音の間隔を指します。「全音」とは、鍵盤を一つ飛ばして取ったときの音の間隔を指します。たとえば、ミとファは半音の関係です。ドとレは全音の関係です。(黒鍵も数えます)</p>
-  <img src="./images/dtm009.png" alt="">
+  <img src="../images/dtm009.png" alt="">
   <p>出典: <a href="https://ai-catcher.com/">アイキャッチャー</a></p>
-  <p>「メジャースケール」というのは、主音から「全音、全音、半音、全音、全音、全音、半音」の間隔で音を取っていくスケールのことです。明るい感じの響きがします。さっきの鍵盤でC-メジャースケールを確認すると、確かに白鍵しか使っていません。<br>
-  「マイナースケール」というのは、主音から「全音、半音、全音、全音、半音、全音、全音」と音を取っていくスケールのことです。暗い感じの響きがします。<br>
-  この二つは違うようでよく似ている、というのが次の話題です。(ちなみに、全部全音の間隔で音を取るホールトーンスケールや、全部半音の間隔で取る(=要するに全部の鍵盤を使う！)クロマティックスケールというのもあります。)</p>
+  <p>
+    「メジャースケール」というのは、主音から「全音、全音、半音、全音、全音、全音、半音」の間隔で音を取っていくスケールのことです。明るい感じの響きがします。さっきの鍵盤でC-メジャースケールを確認すると、確かに白鍵しか使っていません。<br>
+    「マイナースケール」というのは、主音から「全音、半音、全音、全音、半音、全音、全音」と音を取っていくスケールのことです。暗い感じの響きがします。<br>
+    この二つは違うようでよく似ている、というのが次の話題です。(ちなみに、全部全音の間隔で音を取るホールトーンスケールや、全部半音の間隔で取る(=要するに全部の鍵盤を使う！)クロマティックスケールというのもあります。)</p>
 
   <h2 id="32-%E3%82%AD%E3%83%BC">3.2 キー</h2>
 
   <p>さて、前回はちょっとだけ調の話をしました。
-  前回の記事の中で、筆者は『亡き王女の為のセプテット』についてこのような言及をしました。</p>
+    前回の記事の中で、筆者は『亡き王女の為のセプテット』についてこのような言及をしました。</p>
   <blockquote>
-  <p>前回の曲(編注、セプテットのことです)はロ短調、B-minor(もしかしたらニ長調、D-majorかも)という調なのですが</p>
+    <p>前回の曲(編注、セプテットのことです)はロ短調、B-minor(もしかしたらニ長調、D-majorかも)という調なのですが</p>
   </blockquote>
   <p>ロ短調で使う音階を書き出してみます。ロは「シ」の音を指していて、ドとファの部分に♯がついていましたから、「シ、ド♯、レ、ミ、ファ♯、ソ、ラ」でした。<br>
-  ニ長調で使う音階も同様に書き出してみましょう。ニは「レ」の音を指していて、同様にドとファの部分に♯がついていましたから、「レ、ミ、ファ♯、ソ、ラ、シ、ド♯」ですね。<br>
-  二つの音階を見比べてみましょう。なんと使われている音が完全に一致します！では我々はどのようにしてロ短調とニ長調を区別しているのでしょう？答えは、「<strong>感覚</strong>」です。明るいなーと思ったら長調だと思うし、暗いなーと思ったら短調だと思います。長調と短調の境目は非常に曖昧なのです。</p>
-  <p>実は、一つ長調を選ぶと、それに対応する短調(短三度下の音が主音になります。短三度というのはざっくり、鍵盤3つ下がったところです。今度説明するかも)が必ず存在します。そして、その調の関係性をレラティブ(relative)と呼びます。</p>
+    ニ長調で使う音階も同様に書き出してみましょう。ニは「レ」の音を指していて、同様にドとファの部分に♯がついていましたから、「レ、ミ、ファ♯、ソ、ラ、シ、ド♯」ですね。<br>
+    二つの音階を見比べてみましょう。なんと使われている音が完全に一致します！では我々はどのようにしてロ短調とニ長調を区別しているのでしょう？答えは、「<strong>感覚</strong>」です。明るいなーと思ったら長調だと思うし、暗いなーと思ったら短調だと思います。長調と短調の境目は非常に曖昧なのです。
+  </p>
+  <p>実は、一つ長調を選ぶと、それに対応する短調(短三度下の音が主音になります。短三度というのはざっくり、鍵盤3つ下がったところです。今度説明するかも)が必ず存在します。そして、その調の関係性をレラティブ(relative)と呼びます。
+  </p>
 
   <h2 id="33-%E3%82%B3%E3%83%BC%E3%83%89">3.3 コード</h2>
 
   <p>コードは結構有名なので、名前を聞いたことくらいはあるかもしれません。カノンコード、とか。<br>
-  コードというのは、日本語だと「和音」といいます。かなりざっくり言うと、「特定の決まりにのっとって鍵盤を同時に押すときれいな音が鳴る」ということです。「特定の決まりにのっとって」というのが大事で、適当に押すと汚い音が鳴って、なんとなく精神が不安になりそうな感じがします。(不協和音ってやつですね)</p>
+    コードというのは、日本語だと「和音」といいます。かなりざっくり言うと、「特定の決まりにのっとって鍵盤を同時に押すときれいな音が鳴る」ということです。「特定の決まりにのっとって」というのが大事で、適当に押すと汚い音が鳴って、なんとなく精神が不安になりそうな感じがします。(不協和音ってやつですね)
+  </p>
   <p>今日は三和音をやるのですが、何はともあれ鳴らしてみましょう。(ちなみに三和音は英語でトライアドtriadという)</p>
   <p>DAWを起動して、ピアノロールで画像のように入力してみましょう。</p>
-  <img src="./images/dtm010.png" alt="">
-  <p>再生ボタンを押すと……どうでしょう、きれいで明るい感じの音が鳴りましたね。これらはどちらも「メジャーコード」に属しています。名前はそれぞれCmaj(C-メジャーと読みます)、Dmaj(D-メジャーと読みます)です。majを略して単にC,Dと書かれることもあります。</p>
-  <p>構成音を見てみましょう。一番下の音(ルートと言います)を基準に半音の単位で、<strong>1番目、5番目、8番目</strong>にある音が使われていますね。DAWにコードを打ち込むうえで今日一番重要なのはここです。ここだけでも覚えてください。ディグリーネームで言うと、I,III,Vが使われています。(ドミソ、ですね)<br>
-  メジャーコードであることさえわかれば音の間隔は先述したとおりに定まるので、文字としてはルート音だけ書けば和音が一意に定まるわけです。便利！</p>
+  <img src="../images/dtm010.png" alt="">
+  <p>
+    再生ボタンを押すと……どうでしょう、きれいで明るい感じの音が鳴りましたね。これらはどちらも「メジャーコード」に属しています。名前はそれぞれCmaj(C-メジャーと読みます)、Dmaj(D-メジャーと読みます)です。majを略して単にC,Dと書かれることもあります。
+  </p>
+  <p>
+    構成音を見てみましょう。一番下の音(ルートと言います)を基準に半音の単位で、<strong>1番目、5番目、8番目</strong>にある音が使われていますね。DAWにコードを打ち込むうえで今日一番重要なのはここです。ここだけでも覚えてください。ディグリーネームで言うと、I,III,Vが使われています。(ドミソ、ですね)<br>
+    メジャーコードであることさえわかれば音の間隔は先述したとおりに定まるので、文字としてはルート音だけ書けば和音が一意に定まるわけです。便利！</p>
   <p>次はマイナーコードです。今度はこんな感じに。</p>
-  <img src="./images/dtm011.png" alt="">
+  <img src="../images/dtm011.png" alt="">
   <p>要するに二番目の音を半音下げてあげるわけです。再生ボタンを押すと、なんだか物悲しい感じの音が鳴りましたね。これらがマイナーコード(の一部)です。名前はそれぞれCm(C-マイナー)、Dm(D-マイナー)です。</p>
   <p>構成音は先述したように、ルートを基準に半音の単位で、<strong>1番目、4番目、8番目</strong>にある音が使われています。
-  (ディミニッシュコードとかいうのもあるんですけど、気になる人は調べてみてください)</p>
+    (ディミニッシュコードとかいうのもあるんですけど、気になる人は調べてみてください)</p>
 
-  <h3 id="331-%E3%83%80%E3%82%A4%E3%82%A2%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B3%E3%83%BC%E3%83%89">3.3.1 ダイアトニックコード</h3>
+  <h3 id="331-%E3%83%80%E3%82%A4%E3%82%A2%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B3%E3%83%BC%E3%83%89">3.3.1
+    ダイアトニックコード</h3>
 
   <p>ダイアトニックコードというのは、スケール内の音だけで作れるコードのことです。以降、ディグリーネームで表記しているときはダイアトニックコードの話だと思ってください。</p>
 
-  <h3 id="332-%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%81%A8%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88%E3%82%B5%E3%83%96%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88">3.3.2 トニックとドミナント、サブドミナント</h3>
+  <h3
+    id="332-%E3%83%88%E3%83%8B%E3%83%83%E3%82%AF%E3%81%A8%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88%E3%82%B5%E3%83%96%E3%83%89%E3%83%9F%E3%83%8A%E3%83%B3%E3%83%88">
+    3.3.2 トニックとドミナント、サブドミナント</h3>
 
   <p>コードは安定した響きの「トニック」、不安定な響きをした「ドミナント」、中間的な「サブドミナント」の三種類に分けられます。以下、それぞれの解説です。</p>
   <ul>
     <li>トニック<br>
-    Iのコード。安定感があって、フレーズを終わらせるときに使えます。似ている雰囲気のコード(代理コード)に、IIIとVIがあります。</li>
+      Iのコード。安定感があって、フレーズを終わらせるときに使えます。似ている雰囲気のコード(代理コード)に、IIIとVIがあります。</li>
     <li>ドミナント<br>
-    Vのコード。不安定で、トニック(特にI)に繋がりやすい傾向です。代理コードはありません。(厳密に(？)言うとあります。VIIです。が、使いづらいコードです。あと、IIIは場合によっては、ドミナントの代理コードとして使われる場合があります。)</li>
+      Vのコード。不安定で、トニック(特にI)に繋がりやすい傾向です。代理コードはありません。(厳密に(？)言うとあります。VIIです。が、使いづらいコードです。あと、IIIは場合によっては、ドミナントの代理コードとして使われる場合があります。)
+    </li>
     <li>サブドミナント<br>
-    IVのコード。中間的なので、トニックにもドミナントにもつながります。代理コードはIIです。</li>
+      IVのコード。中間的なので、トニックにもドミナントにもつながります。代理コードはIIです。</li>
   </ul>
   <p>さて、コード進行を考えるときに、トニックで終わらせればいいことが分かりました。実は始めるときもトニックで始めていいです。そうすると、ひとまとまりのコード進行として、</p>
   <ul>
@@ -458,40 +139,56 @@
   <p>前の節では、コード進行を自分で考える必要がある、みたいな言い方をしました。考えてもいいのですが、世間には先人の考えたいい感じのコード進行がありますから、これを借りて効率的にいい感じのコードを作りましょう。</p>
   <ul>
     <li>王道進行:IV→V→IIIm→VIm<br>
-    J-POPによく使われているやつです。『<a href="https://www.youtube.com/watch?v=Cc1QzIWWIrc">Can't take my eyes off you(君の瞳に恋してる)</a>』や、『<a href="https://www.youtube.com/watch?v=5CSNv9MNEC4">Don't say &quot;lazy&quot;</a>』がそうです。</li>
+      J-POPによく使われているやつです。『<a href="https://www.youtube.com/watch?v=Cc1QzIWWIrc">Can't take my eyes off
+        you(君の瞳に恋してる)</a>』や、『<a href="https://www.youtube.com/watch?v=5CSNv9MNEC4">Don't say &quot;lazy&quot;</a>』がそうです。
+    </li>
     <li>カノン進行:I→V→VIm→IIIm→IV→I→V<br>
-    カノンです。これもJ-POPによく使われているやつです。『<a href="https://www.youtube.com/watch?v=p_2F2lKV9uA">さくら(独唱)</a>』や、『<a href="https://www.youtube.com/watch?v=gsVGf1T2Hfs">Dragon Night</a>』がそうです。</li>
+      カノンです。これもJ-POPによく使われているやつです。『<a href="https://www.youtube.com/watch?v=p_2F2lKV9uA">さくら(独唱)</a>』や、『<a
+        href="https://www.youtube.com/watch?v=gsVGf1T2Hfs">Dragon Night</a>』がそうです。</li>
     <li>小室進行:VIm→IV→V→I<br>
-    小室哲哉さんが使ってたやつです。Get Wild。使用例は『<a href="https://www.youtube.com/watch?v=shs0rAiwsGQ">千本桜</a>』などです。</li>
+      小室哲哉さんが使ってたやつです。Get Wild。使用例は『<a href="https://www.youtube.com/watch?v=shs0rAiwsGQ">千本桜</a>』などです。</li>
     <li>ポップパンク進行:VIm→IV→I→V<br>
-    最近の洋楽(特に、EDM系)などによくみられるやつです。上ではVImから始まっていますが、他にも、順番は変えずにIやIVから始めるタイプもあります。使用例は『<a href="https://youtu.be/60ItHLz5WEA">Faded</a>』や『<a href="https://youtu.be/PDSkFeMVNFs">前前前世</a>』などです。</li>
+      最近の洋楽(特に、EDM系)などによくみられるやつです。上ではVImから始まっていますが、他にも、順番は変えずにIやIVから始めるタイプもあります。使用例は『<a
+        href="https://youtu.be/60ItHLz5WEA">Faded</a>』や『<a href="https://youtu.be/PDSkFeMVNFs">前前前世</a>』などです。</li>
     <li>丸サ進行:IV→III(m)→VIm→I<br>
-    『<a href="https://youtu.be/4tlUwgtgdZA">丸の内サディスティック</a>』に使われているのでこう言われます。オシャな感じ。使用例は『<a href="https://youtu.be/TA5OFS_xX0c">シャルル</a>』や『<a href="https://youtu.be/9QLT1Aw_45s">フォニイ</a>』などです。
+      『<a href="https://youtu.be/4tlUwgtgdZA">丸の内サディスティック</a>』に使われているのでこう言われます。オシャな感じ。使用例は『<a
+        href="https://youtu.be/TA5OFS_xX0c">シャルル</a>』や『<a href="https://youtu.be/9QLT1Aw_45s">フォニイ</a>』などです。
     </li>
   </ul>
-  <p>これ以外にも結構無数にあるので、気になる人は検索してみたり、<a href="https://trap.jp/post/562/">ここ</a>を読んでみたりしてください。<a href="https://www.youtube.com/watch?v=tE-b4nvusB8">これ</a>も音が鳴るのでいいかもしれません。</p>
+  <p>これ以外にも結構無数にあるので、気になる人は検索してみたり、<a href="https://trap.jp/post/562/">ここ</a>を読んでみたりしてください。<a
+      href="https://www.youtube.com/watch?v=tE-b4nvusB8">これ</a>も音が鳴るのでいいかもしれません。</p>
 
   <h2 id="34-%E3%83%99%E3%83%BC%E3%82%B9%E4%BD%9C%E6%88%90">3.4 ベース作成</h2>
 
   <p>お待たせしました。理論の話がかなり長かったと思いますが、重要なところでもあるので許してください……。</p>
-  <p>ここからは、ベースとメロディを作ってもらいます。今回は紹介した3種類の中から一つ進行を選んで、それをベースとしましょう。コツとして、コードとは別にルート音は1か2オクターブ下で鳴らしてあげると(左手でルート音を、右手でコードを、ということ)音に厚みが出ます。メロディは好きに打ち込んでください！気分の赴くままにポチポチしましょう。あと、<strong>ベースとメロディのキーを合わせる</strong>ことに注意してください。</p>
-  
-  <h3 id="341-%E3%82%B3%E3%83%BC%E3%83%89%E8%B1%86%E7%9F%A5%E8%AD%98%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%AF%E6%AC%A1%E5%9B%9E">3.4.1 コード豆知識(詳しくは次回)</h3>
-  
-  <p>コードは構成音が合ってさえいればいいので、たとえばCmajのGを1オクターブ下げたりしても響きがこわれません。これを転回といいます。音の上下が激しいときに転回してあげるといい感じになります。このように転回すると音符同士が離れるのですが、音程の開き具合をボイシングといいます。</p>
-  <h2 id="35-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">3.5 今日やった大事なこと(覚えてね！)</h2>
+  <p>
+    ここからは、ベースとメロディを作ってもらいます。今回は紹介した3種類の中から一つ進行を選んで、それをベースとしましょう。コツとして、コードとは別にルート音は1か2オクターブ下で鳴らしてあげると(左手でルート音を、右手でコードを、ということ)音に厚みが出ます。メロディは好きに打ち込んでください！気分の赴くままにポチポチしましょう。あと、<strong>ベースとメロディのキーを合わせる</strong>ことに注意してください。
+  </p>
+
+  <h3
+    id="341-%E3%82%B3%E3%83%BC%E3%83%89%E8%B1%86%E7%9F%A5%E8%AD%98%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%AF%E6%AC%A1%E5%9B%9E">
+    3.4.1 コード豆知識(詳しくは次回)</h3>
+
+  <p>
+    コードは構成音が合ってさえいればいいので、たとえばCmajのGを1オクターブ下げたりしても響きがこわれません。これを転回といいます。音の上下が激しいときに転回してあげるといい感じになります。このように転回すると音符同士が離れるのですが、音程の開き具合をボイシングといいます。
+  </p>
+  <h2
+    id="35-%E4%BB%8A%E6%97%A5%E3%82%84%E3%81%A3%E3%81%9F%E5%A4%A7%E4%BA%8B%E3%81%AA%E3%81%93%E3%81%A8%E8%A6%9A%E3%81%88%E3%81%A6%E3%81%AD">
+    3.5 今日やった大事なこと(覚えてね！)</h2>
   <ul>
     <li>メジャー/マイナーコードの打ち込み方</li>
     <li>コード進行のルール</li>
     <li>有名なコード進行</li>
   </ul>
-  
+
   <h2 id="36-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">3.6 おわりに</h2>
-  
-  <p>おつかれさまでした。今回は本当に長かったですね。さて、今回の内容はかなり重要です。重要だけど、実際にDTMをしているときは「今日やった大事なこと」に掲載されていることくらいしか考えていません。ので、よくわかんないな～と思ったら最低限以外は忘れてしまってもさして問題はありません。気持ちいい感じに音を打ち込んでいったら、だいたいルールの範疇に収まっているので気に病むことはないです。</p>
+
+  <p>
+    おつかれさまでした。今回は本当に長かったですね。さて、今回の内容はかなり重要です。重要だけど、実際にDTMをしているときは「今日やった大事なこと」に掲載されていることくらいしか考えていません。ので、よくわかんないな～と思ったら最低限以外は忘れてしまってもさして問題はありません。気持ちいい感じに音を打ち込んでいったら、だいたいルールの範疇に収まっているので気に病むことはないです。
+  </p>
   <p><strong>今回も宿題があります。</strong><br>
-  発表会のために、ベース(コード進行)を考えておきましょう。既存のものでも全然おっけーです。気に入ったものを使っちゃいましょう！</p>
-  
+    発表会のために、ベース(コード進行)を考えておきましょう。既存のものでも全然おっけーです。気に入ったものを使っちゃいましょう！</p>
+
   <h2 id="37-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">3.7 参考にした資料</h2>
 
   <ul>
@@ -502,4 +199,5 @@
   </ul>
 
 </body>
+
 </html>
