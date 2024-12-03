@@ -125,6 +125,7 @@ table {
 	overflow-x: auto;
 	border: none;
 	background-color: white;
+	text-wrap: nowrap;
 
 	td, th {
 		font-weight: 400;
