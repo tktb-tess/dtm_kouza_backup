@@ -3,64 +3,54 @@
 
 <head>
   <title>CCS DTM講座'21('23改訂版)</title>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link type="text/css" rel="stylesheet" href="./style.css">
-
-  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-        ? 'dark'
-        : 'default'
-    });
-  </script>
-  <h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721">CCS DTM講座'21('23改訂版)</h1>
-  <h2 id="%E3%81%93%E3%81%AE%E8%AC%9B%E5%BA%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">この講座について</h2>
-  <ul>
-    <li>前提知識はあまり要求しません。が五線譜が読めると便利です。</li>
-    <li>DTMの基礎的な部分(DAWの操作方法や、理論の基礎)について解説します。</li>
-    <li>わからないところがあったら気軽に質問してください。</li>
-    <li>タイトルは堅苦しく書いてありますが、ゆるくやります。</li>
-    <li>DAWはCakewalkを使うことを想定していますが、講師がCakewalk使いではなかったら適宜読み替えてください。(内容、課題等も適宜取捨選択の上進めてください)</li>
-    <li>各回の末尾に、執筆の際に参照した資料を掲載してあります。(ない回もあります)気になる人は確認してください。</li>
-  </ul>
-  <h2 id="%E8%AC%9B%E5%BA%A7%E3%81%AE%E6%B5%81%E3%82%8C">講座の流れ</h2>
-  <p><a href="./articles/0.html">第0回</a>:環境構築(自分でやってね！できなかったら当日やります)</p>
-  <p><a href="./articles/1.html">第1回</a>:DAWとは何か、DAWに触れる</p>
-  <p><a href="./articles/2.html">第2回</a>:音楽理論基礎1(スケール)、メロディ作成</p>
-  <p><a href="./articles/3.html">第3回</a>:音楽理論基礎2(スケール、キー、コード)、ベース作成</p>
-  <p><a href="./articles/4.html">第4回</a>:音楽理論基礎3(その他)、リズム隊作成、ミックス基礎1</p>
-  <p><a href="./articles/5.html">第5回</a>:楽曲発表会、これからの活動にあたっていろいろ</p>
-  <h2
-    id="%E3%81%8A%E3%81%BE%E3%81%91%E3%81%AE%E8%B3%87%E6%96%99%E6%9A%87%E3%81%AA%E3%81%A8%E3%81%8D%E7%99%BA%E8%A1%A8%E7%94%A8%E3%81%AE%E6%9B%B2%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%A8%E3%81%8B%E3%81%AB%E8%AA%AD%E3%82%93%E3%81%A7%E3%81%BF%E3%81%A6%E3%81%AD">
-    おまけの資料(暇なとき、発表用の曲を作るときとかに読んでみてね)</h2>
-  <p><a href="./articles/effect.html">エフェクトの基礎、ミックス基礎2</a>:EQ、Reverb、Compressor、Limiter</p>
-  <h2 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%85%BC%E6%9C%89%E7%94%A8%E3%81%AA%E8%B3%87%E6%96%99%E3%81%AA%E3%81%A9">
-    参考文献兼有用な資料など</h2>
-  <ul>
-    <li><a href="https://sleepfreaks-dtm.com">sleepfreaks</a><br>
-      DTM始めたての人がまず見るといいかもしれないサイトです。情報量はかなり多いけど、ちょっと探しづらいのが難点。</li>
-    <li><a href="https://soundquest.jp/quest/">SoundQuest</a><br>
-      音楽理論について平易に詳しく説明しているサイト。読み物として面白いです(まだ読み終わってないけど……)</li>
-    <li><a href="https://p.eagate.573.jp/game/bemani/hinabita/p/bittersweets/special/talk_1.html?n=1">あのね！</a><br>
-      かわいいので入れています。DTMよりも音楽全般の知識、という感じです。</li>
-    <li><a href="https://jp.yamaha.com/services/music_pal/study/">MUSIC PAL</a><br>
-      特に「コードについて学ぶ」、「作曲入門講座」が役に立つと思います。なぜかは知らないけど少し読みにくい感じがしますが……</li>
-    <li><a href="https://computermusic.jp">Computer Music Japan</a><br>
-      全く理論には関係ないんですけど、音源のセール情報とかが手に入ります。</li>
-    <li><a href="https://www.youtube.com/@MKShadw/featured">MK / Shadw</a><br>
-      筆者の趣味ですが、電子音楽についてはかなり参考になると思います。</li>
-    <li><a href="https://www.youtube.com/channel/UCo8cJlfv-O70hqGjej1JdeQ/featured">Dot Shikaku</a><br>
-      筆者の趣味2ですが、「バーチャル助手」シリーズは「この音はこうしてできていたのか……！」という感じの感動が得られると思います。</li>
-    <li><a href="https://rechord.cc/">rechord</a><br>
-      資料というより便利ツール。コードを入力すると音を出してくれます。簡易的に音を確かめたいときなどにどうぞ。</li>
-  </ul>
-
+  <div id="_container">
+    <h1 id="title">CCS DTM講座'21('23改訂版)</h1>
+    <h2 id="about-kouza">この講座について</h2>
+    <ul>
+      <li>前提知識はあまり要求しません。が五線譜が読めると便利です。</li>
+      <li>DTMの基礎的な部分(DAWの操作方法や、理論の基礎)について解説します。</li>
+      <li>わからないところがあったら気軽に質問してください。</li>
+      <li>タイトルは堅苦しく書いてありますが、ゆるくやります。</li>
+      <li>DAWはCakewalkを使うことを想定していますが、講師がCakewalk使いではなかったら適宜読み替えてください。(内容、課題等も適宜取捨選択の上進めてください)</li>
+      <li>各回の末尾に、執筆の際に参照した資料を掲載してあります。(ない回もあります)気になる人は確認してください。</li>
+    </ul>
+    <h2 id="article-list">講座の流れ</h2>
+    <ul class="unstyled">
+      <li><a href="./articles/0.html">第0回</a>:環境構築(自分でやってね！できなかったら当日やります)</li>
+      <li><a href="./articles/1.html">第1回</a>:DAWとは何か、DAWに触れる</li>
+      <li><a href="./articles/2.html">第2回</a>:音楽理論基礎1(スケール)、メロディ作成</li>
+      <li><a href="./articles/3.html">第3回</a>:音楽理論基礎2(スケール、キー、コード)、ベース作成</li>
+      <li><a href="./articles/4.html">第4回</a>:音楽理論基礎3(その他)、リズム隊作成、ミックス基礎1</li>
+      <li><a href="./articles/5.html">第5回</a>:楽曲発表会、これからの活動にあたっていろいろ</li>
+    </ul>
+    <h2 id="omake-no-shiryou">おまけの資料(暇なとき、発表用の曲を作るときとかに読んでみてね)</h2>
+    <p><a href="./articles/effect.html">エフェクトの基礎、ミックス基礎2</a>:EQ、Reverb、Compressor、Limiter</p>
+    <h2 id="refs">参考文献兼有用な資料など</h2>
+    <ul>
+      <li><a href="https://sleepfreaks-dtm.com">sleepfreaks</a><br>
+        DTM始めたての人がまず見るといいかもしれないサイトです。情報量はかなり多いけど、ちょっと探しづらいのが難点。</li>
+      <li><a href="https://soundquest.jp/quest/">SoundQuest</a><br>
+        音楽理論について平易に詳しく説明しているサイト。読み物として面白いです(まだ読み終わってないけど……)</li>
+      <li><a href="https://p.eagate.573.jp/game/bemani/hinabita/p/bittersweets/special/talk_1.html?n=1">あのね！</a><br>
+        かわいいので入れています。DTMよりも音楽全般の知識、という感じです。</li>
+      <li><a href="https://jp.yamaha.com/services/music_pal/study/">MUSIC PAL</a><br>
+        特に「コードについて学ぶ」、「作曲入門講座」が役に立つと思います。なぜかは知らないけど少し読みにくい感じがしますが……</li>
+      <li><a href="https://computermusic.jp">Computer Music Japan</a><br>
+        全く理論には関係ないんですけど、音源のセール情報とかが手に入ります。</li>
+      <li><a href="https://www.youtube.com/@MKShadw/featured">MK / Shadw</a><br>
+        筆者の趣味ですが、電子音楽についてはかなり参考になると思います。</li>
+      <li><a href="https://www.youtube.com/channel/UCo8cJlfv-O70hqGjej1JdeQ/featured">Dot Shikaku</a><br>
+        筆者の趣味2ですが、「バーチャル助手」シリーズは「この音はこうしてできていたのか……！」という感じの感動が得られると思います。</li>
+      <li><a href="https://rechord.cc/">rechord</a><br>
+        資料というより便利ツール。コードを入力すると音を出してくれます。簡易的に音を確かめたいときなどにどうぞ。</li>
+    </ul>
+  </div>
 </body>
-
 </html>

@@ -3,83 +3,87 @@
 
 <head>
   <title>第0回</title>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link type="text/css" rel="stylesheet" href="../style.css">
-  
-
-  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-        ? 'dark'
-        : 'default'
-    });
-  </script>
-  <!-- omit in toc -->
-  <h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC0%E5%9B%9E">CCS DTM講座'21 第0回</h1>
-  <!-- omit in toc -->
-  <h2 id="%E7%9B%AE%E6%AC%A1">目次</h2>
-  <ul>
-    <li><a href="#0-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">0 環境構築</a></li>
+  <div id="_container">
+    <!-- omit in toc -->
+    <h1 id="title">CCS DTM講座'21 第0回</h1>
+    <!-- omit in toc -->
+    <h2 id="%E7%9B%AE%E6%AC%A1">目次</h2>
     <ul>
-      <li><a href="#01-cakewalk%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.1 Cakewalkのインストール</a>
+      <li>
+        <a href="#0.0">0 環境構築</a>
+        <ul class="">
+          <li><a href="#0.1">0.1 Cakewalkのインストール</a></li>
+          <li><a href="#0.2">0.2 Kompleteのインストール</a></li>
+          <li><a href="#0.3">0.3 Studio Oneのインストール（不可）</a></li>
+          <li><a href="#0.4">0.4 FL Studioのインストール</a></li>
+        </ul>
       </li>
-      <li><a href="#02-komplete%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.2 Kompleteのインストール</a>
-      </li>
-      <li><a href="#03-studio-one%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.3 Studio
-          Oneのインストール</a></li>
-      <li><a href="#04-fl-studio%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.4 FL
-          Studioのインストール</a></li>
     </ul>
-  </ul>
-  <h2 id="0-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">0 環境構築</h2>
-  <p>この講座では、DAWにCakewalk by BandLab(以降単にCakewalkと呼びます)と、音源にKOMPLETE START(以降単にKOMPLETEと呼びます)(誤字じゃないよ)を使います。
-    これらをパソコンにインストールする方法を紹介します。(KOMPLETEは便利なのでどのDAWでもインストールする価値はあると思いますが、もう環境がある人はやらなくて問題ありません。)</p>
+    <h2 id="0.0">0 環境構築</h2>
+    <p>この講座では、DAWにCakewalk by BandLab(以降単にCakewalkと呼びます)と、音源にKOMPLETE START(以降単にKOMPLETEと呼びます)を使います。
+      これらをパソコンにインストールする方法を紹介します。(KOMPLETEは便利なのでどのDAWでもインストールする価値はあると思いますが、もう環境がある人はやらなくて問題ありません。)</p>
 
-  <h3 id="01-cakewalk%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.1 Cakewalkのインストール</h3>
+    <h3 id="0.1">0.1 Cakewalkのインストール</h3>
 
-  <p>以下は情報が恐らく古いです。こちらの方が詳しいかもしれません。→<a href="https://1176fire.com/cakewalk-by-bandlab-howto-install/">完全無料のDAW「Cakewalk
-      by BandLab」をインストールしてみよう【旧SONAR】</a></p>
-  <p><a
-      href="https://www.bandlab.com/products/cakewalk">公式ページ</a>にアクセスし、&quot;Download&quot;を選択。アカウントを持っていない人は適当に作ってください。そうするとBandLab
-    Assistantというアプリがインストールされます。これは謎のアプリなのですが、Cakewalkのインストールに必要です。(単独でインストールしたいですね。追記: 単独でインストールできるようになったっぽいです。)<br>
-    BandLab
-    Assistantを起動するとログインしろと言われるはずなのでログインします。ログインが終わると縦長の画面が出てくるのですが、Appsと書いてあるタブを開くとCakewalkが表示されるので、Installみたいなボタンをクリックします。途中でAddonに関する画面が出てくると思うので、特にこだわりのない人はStudio
-    Instruments Suiteにだけチェックを入れてください(これも音源で、ピアノとギター、ストリングスとあとドラムがついてきます)。<br>
-    これでインストール完了です。</p>
+    <p>
+      以下は情報が恐らく古いです。こちらの方が詳しいかもしれません。→
+      <a href="https://1176fire.com/cakewalk-by-bandlab-howto-install/">完全無料のDAW「Cakewalk
+        by BandLab」をインストールしてみよう【旧SONAR】
+      </a>
+    </p>
+    <p>
+      <a href="https://www.bandlab.com/products/cakewalk">公式ページ</a>にアクセスし、&quot;Download&quot;を選択。アカウントを持っていない人は適当に作ってください。そうするとBandLab
+      Assistantというアプリがインストールされます。これは謎のアプリなのですが、Cakewalkのインストールに必要です。(単独でインストールしたいですね。追記: 単独でインストールできるようになったっぽいです。)
+    </p>
+    <p>
+      BandLab Assistantを起動するとログインしろと言われるはずなのでログインします。ログインが終わると縦長の画面が出てくるのですが、Appsと書いてあるタブを開くとCakewalkが表示されるので、Installみたいなボタンをクリックします。途中でAddonに関する画面が出てくると思うので、特にこだわりのない人はStudio
+      Instruments Suiteにだけチェックを入れてください(これも音源で、ピアノとギター、ストリングスとあとドラムがついてきます)。<br>
+      これでインストール完了です。
+    </p>
+    <h3 id="0.2">0.2 KOMPLETEのインストール</h3>
 
-  <h3 id="02-komplete%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.2 KOMPLETEのインストール</h3>
+    <p>こちらの方が詳しいかもしれません。→
+      <a href="https://www.ongen-opt.com/entry/2020/09/23/194500#11Native-Access%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%A8%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">【2023年版】無料で使えるKOMPLETE
+        STARTの入手とインストール方法【DTMフリー】
+      </a>
+    </p>
+    <p>
+      <a href="https://www.native-instruments.com/jp/products/komplete/bundles/komplete-start/">公式ページ</a>にアクセスし、右上の"FREE
+      DOWNLOAD"を選択。アカウントを作成し(タブは閉じないで！)、Native Accessをインストールしたら、ブラウザに戻って&quot;KOMPLETE
+      STARTを入手&quot;をクリック。色々聞かれるので適当に済ませます。<br />
+      終わったらNative Accessを起動して、ログイン。右上に&quot;Refresh&quot;があるので、&quot;NOT
+      INSTALLED&quot;タブにたくさん(ほんとです)出てくるまでぽちぽちしてください。出てきたらINSTALL ALL。<br />
+      これでインストール完了です。<br />
+      が、DAWで起動する前に、デスクトップのショートカットから<strong>KOMPLETE KONTROLを起動する</strong>ことを忘れないでください。
+    </p>
 
-  <p>こちらの方が詳しいかもしれません。→<a
-      href="https://www.ongen-opt.com/entry/2020/09/23/194500#11Native-Access%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%A8%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">【2023年版】無料で使えるKOMPLETE
-      STARTの入手とインストール方法【DTMフリー】</a></p>
-  <p><a href="https://www.native-instruments.com/jp/products/komplete/bundles/komplete-start/">公式ページ</a>にアクセスし、右上の"FREE
-    DOWNLOAD"を選択。アカウントを作成し(タブは閉じないで！)、Native Accessをインストールしたら、ブラウザに戻って&quot;KOMPLETE
-    STARTを入手&quot;をクリック。色々聞かれるので適当に済ませます。<br>
-    終わったらNative Accessを起動して、ログイン。右上に&quot;Refresh&quot;があるので、&quot;NOT
-    INSTALLED&quot;タブにたくさん(ほんとです)出てくるまでぽちぽちしてください。出てきたらINSTALL ALL。<br>
-    これでインストール完了です。<br>
-    が、DAWで起動する前に、デスクトップのショートカットから<strong>KOMPLETE KONTROLを起動する</strong>ことを忘れないでください。</p>
+    <h3 id="0.3">0.3 Studio One Primeのインストール（不可）</h3>
+    <p class="text-centre" style="color: red;">2024/10/10をもって、Studio One Primeの配布は終了したので、現在このDAWは使えません。</p>
+    <p>
+      こちらの方が詳しいかもしれません。→
+      <a href="https://kaymusic-online.com/studioone/install_prime/">
+        無償版『Studio One 6 Prime』のダウンロード&インストール手順
+      </a>
+    </p>
+    <p>Presonusアカウントを作成したのち、Studio One 5 Primeをインストールしてください。初回起動の時に音源などのもろもろのインストールがあるので、「推奨インストール」を選択してください。</p>
 
-  <h3 id="03-studio-one%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.3 Studio One Primeのインストール</h3>
+    <h3 id="0.4">0.4 FL Studioのインストール</h3>
 
-  <p>こちらの方が詳しいかもしれません。→<a href="https://kaymusic-online.com/studioone/install_prime/">無償版『Studio One 6
-      Prime』のダウンロード&インストール手順</a></p>
-  <p>Presonusアカウントを作成したのち、Studio One 5 Primeをインストールしてください。初回起動の時に音源などのもろもろのインストールがあるので、「推奨インストール」を選択してください。</p>
-
-  <h3 id="04-fl-studio%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">0.4 FL Studioのインストール</h3>
-
-  <p>こちらの方が詳しいかもしれません。→<a href="https://www.newdtm-rain.com/article/fl-studiowodaunro-do.html">【無料DAW】FL
-      Studio体験版をダウンロードしよう！</a></p>
-  <p>
-    これは特にアカウントの作成はいりません。Demo版をインストールすることに注意してください。また、ショートカットから起動すればいいですが、そうではない場合はFL64.exeを選んで起動してください。(わからないならたぶん読み飛ばして大丈夫です)
-  </p>
-
+    <p>
+      こちらの方が詳しいかもしれません。→
+      <a href="https://www.newdtm-rain.com/article/fl-studiowodaunro-do.html">【無料DAW】FL
+        Studio体験版をダウンロードしよう！
+      </a>
+    </p>
+    <p>
+      これは特にアカウントの作成はいりません。Demo版をインストールすることに注意してください。また、ショートカットから起動すればいいですが、そうではない場合はFL64.exeを選んで起動してください。(わからないならたぶん読み飛ばして大丈夫です)
+    </p>
+  </div>
 </body>
-
 </html>
