@@ -278,3 +278,8 @@ figure {
 	font-weight: 700;
 }
 
+.silent {
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+
