@@ -3,7 +3,7 @@
 }
 
 :root {
-	--font-sans: Inter, Arial, "Helvetica Neue", "Noto Sans JP", "Source Han Sans JP", "BIZ UDPゴシック", "Yu Gothic UI", sans-serif;
+	--font-sans: "Inter", "Arial", "Helvetica Neue", "Noto Sans JP", "Source Han Sans JP", "Yu Gothic UI", "Hiragino Sans", system-ui, -apple-system, sans-serif;
 	--color-white1: #f8f9fa;
 	--color-deep-purple1: #1f1e33;
 	--color-pale-black1: rgba(0, 0, 0, 0.2);
@@ -195,7 +195,7 @@ table {
 img {
 	display: block;
 	width: max-content;
-	max-width: 100%;
+	max-width: 90%;
 	height: auto;
 	margin: 1.8rem auto;
 }
